@@ -148,6 +148,25 @@
 
   footer{padding:32px 0;border-top:1px solid var(--line);font-size:13.5px;color:var(--ink-soft)}
   footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+  .mods{display:grid;grid-template-columns:1.6fr 1fr;gap:18px}
+  @media(max-width:900px){.mods{grid-template-columns:1fr}}
+  .mod{border:1px solid var(--line);border-radius:16px;padding:28px;background:#fff;display:flex;flex-direction:column}
+  .mod.main{border-color:var(--brand);box-shadow:0 0 0 1px var(--brand)}
+  .mod .tag{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--brand);margin-bottom:8px}
+  .mod h3{font-family:var(--serif);font-weight:500;font-size:27px;line-height:1.15;margin-bottom:8px}
+  .mod p{color:var(--ink-soft);font-size:15px;margin-bottom:18px}
+  .feats{display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;margin-bottom:22px}
+  .mod:not(.main) .feats{grid-template-columns:1fr}
+  @media(max-width:560px){.feats{grid-template-columns:1fr}}
+  .feats a{display:flex;gap:8px;align-items:flex-start;font-size:14.5px;color:var(--ink)}
+  .feats a:before{content:"";flex:none;width:7px;height:7px;border-radius:50%;background:var(--brand);margin-top:8px}
+  .feats a:hover{color:var(--brand)}
+  .feats .soon{font-size:14.5px;color:var(--ink-soft);display:flex;gap:8px}
+  .feats .soon:before{content:"";flex:none;width:7px;height:7px;border-radius:50%;border:1.5px solid var(--ink-soft);margin-top:7px}
+  .mod .go{margin-top:auto;font-size:14px;font-weight:500;color:var(--brand)}
+  .subnav{display:flex;gap:8px;flex-wrap:wrap;margin-top:-10px;margin-bottom:34px}
+  .subnav a{font-size:13px;border:1px solid var(--line);border-radius:99px;padding:4px 12px;color:var(--ink-soft);background:#fff}
+  .subnav a:hover{color:var(--brand);border-color:var(--brand)}
 </style>
 </head>
 <body>
@@ -156,10 +175,9 @@
   <div class="wrap">
     <a class="logo" href="/"><img src="/bidalize-logo.png" alt="Bidalize" style="height:34px;width:auto" /></a>
     <div class="navlinks">
-      <a href="#how" class="hide">How it works</a>
-      <a href="#negotiate" class="hide">Negotiation</a>
-      <a href="#audit" class="hide">Audit log</a>
+      <a href="#sourcing" class="hide">Sourcing</a>
       <a href="#supplier-check" class="hide">Supplier Check</a>
+      <a href="#how" class="hide">How it works</a>
       <a href="#pricing" class="hide">Pricing</a>
       <a href="https://app.bidalize.com/login">Sign in</a>
       <a href="https://app.bidalize.com/register" class="btn">Start free</a>
@@ -187,10 +205,54 @@
   </div>
 </header>
 
-<section id="supplier" class="wash">
+<section id="modules" style="padding-top:40px">
+  <div class="wrap">
+    <div class="kicker">Two modules, one login</div>
+    <h2>Sourcing runs your quotes to award. Supplier Check vets who you buy from.</h2>
+    <p class="intro">Use one or both. Sourcing is where the work happens; Supplier Check sits beside it with the same login and the same team.</p>
+    <div class="mods">
+      <div class="mod main">
+        <div class="tag">Module 1 · the core</div>
+        <h3>Bidalize Sourcing</h3>
+        <p>From the requisition to a signed-off award — with every quote read for you and every decision on the record.</p>
+        <div class="feats">
+          <a href="#read">Reads any quote — PDF, photo, email</a>
+          <a href="#read">Any language, shown in English</a>
+          <a href="#sheet">Smart comparison sheet</a>
+          <a href="#sheet">Charges in any currency</a>
+          <a href="#negotiate">Negotiation notes</a>
+          <a href="#sheet">AI calculator</a>
+          <a href="#sheet">Must-haves that disqualify</a>
+          <a href="#how">Split awards</a>
+          <a href="#audit">Email sign-off, approvers free</a>
+          <a href="#audit">Audit log and frozen record</a>
+          <a href="#downloads">Excel and CSV downloads</a>
+          <a href="#how">Requisition to RFP in one step</a>
+        </div>
+        <a class="go" href="#sourcing">See Sourcing →</a>
+      </div>
+      <div class="mod">
+        <div class="tag">Module 2</div>
+        <h3>Bidalize Supplier Check</h3>
+        <p>Check your supplier list against tax registers before you award.</p>
+        <div class="feats">
+          <a href="#supplier-check">Bulk check against FBR and PRA lists</a>
+          <a href="#supplier-check">Active or not on the list</a>
+          <a href="#supplier-check">Tax number registered to another company</a>
+          <a href="#supplier-check">Download the results</a>
+          <span class="soon">More registers and checks coming soon</span>
+        </div>
+        <a class="go" href="#supplier-check">See Supplier Check →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="sourcing"></div>
+<section id="read" class="wash">
   <div class="wrap two">
     <div>
-      <div class="kicker">The supplier does nothing different</div>
+      <div class="kicker">Sourcing · Reads anything, any language</div>
       <h2>Suppliers don't resist quoting. They resist the portal.</h2>
       <p class="intro" style="margin-bottom:22px">Portals push the data entry onto suppliers, and small suppliers simply don't quote. With Bidalize your request goes out by email, and the supplier replies the way they always do — a PDF, a photo of a handwritten quote, a spreadsheet, or prices typed in the email. Your side does the reading.</p>
       <ul class="list">
@@ -219,7 +281,7 @@
 
 <section id="how">
   <div class="wrap">
-    <div class="kicker">How it works</div>
+    <div class="kicker">Sourcing · How it works</div>
     <h2>From requisition to award, in one place.</h2>
     <p class="intro">Six steps, and every one of them is on the record.</p>
     <div class="steps">
@@ -235,7 +297,7 @@
 
 <section id="sheet" class="wash">
   <div class="wrap">
-    <div class="kicker">The comparison sheet</div>
+    <div class="kicker">Sourcing · Smart comparison</div>
     <h2>The spreadsheet you build today — without the retyping.</h2>
     <p class="intro">One column per supplier, one row per item, in your currency. Type over any figure; the original reading is kept. The colours tell you where to look.</p>
     <div class="legend">
@@ -259,7 +321,7 @@
 
 <section id="negotiate">
   <div class="wrap">
-    <div class="kicker">Negotiation notes</div>
+    <div class="kicker">Sourcing · Negotiation notes</div>
     <h2>Know what to ask each supplier before you call them.</h2>
     <p class="intro">For every supplier, Bidalize writes down where they stand: how far they are from the leader, which items they're beaten on and by how much, and which terms are weaker. Every number is a cell on the sheet, so you can quote it on the phone.</p>
     <div class="shot narrow" style="margin-top:0">
@@ -271,7 +333,7 @@
 
 <section id="audit" class="wash">
   <div class="wrap">
-    <div class="kicker">Audit log and the record</div>
+    <div class="kicker">Sourcing · Audit log and record</div>
     <h2>When someone asks "why this supplier?", the answer is already written down.</h2>
     <p class="intro">Every step has a name and a time on it — from the requisition to the award. Log entries can't be edited or deleted, and the steps that change the outcome need a reason.</p>
     <div class="shot narrow" style="margin-top:0">
@@ -289,7 +351,7 @@
 
     <div class="two" style="margin-top:56px">
       <div>
-        <div class="kicker">Downloads</div>
+        <div class="kicker" id="downloads">Sourcing · Downloads</div>
         <h2 style="font-size:30px">For the people who read it, and the systems that import it.</h2>
         <div class="files" style="grid-template-columns:1fr">
           <div class="file"><span class="x" style="background:#1d6f42">XLSX</span><b>Excel, for people</b><p>The sheet as you see it — headings, colours, totals and rank — with the request, the exchange rates used and who downloaded it.</p></div>
@@ -308,7 +370,7 @@
   <div class="wrap">
     <div class="sc">
       <div>
-        <div class="kicker">Bidalize Supplier Check</div>
+        <div class="kicker">Module 2 · Bidalize Supplier Check</div>
         <h2>Know a supplier's tax status before you award.</h2>
         <p>Upload your supplier list and check thousands of suppliers in seconds against Pakistan's FBR and PRA active-taxpayer lists: who is active, who isn't on the list, and whose tax number is registered to a different company. Same login as Sourcing.</p>
         <p class="soon"><b>More checks coming soon</b> — further tax registers and other supplier checks will be added to the same list, so one upload keeps working as coverage grows.</p>
