@@ -52,6 +52,11 @@
   .shot img{width:100%;height:auto}
   .shot.narrow{max-width:860px}
   .cap{font-size:13px;color:var(--ink-soft);margin-top:10px}
+  .vids{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media(max-width:800px){.vids{grid-template-columns:1fr}}
+  .vid{margin:0}
+  .vid video{display:block;width:100%;height:auto;aspect-ratio:16/9;border-radius:12px;border:1px solid var(--line);background:#0b1224;box-shadow:0 24px 60px -30px rgba(20,23,31,.28)}
+  .vid figcaption{font-size:14px;color:var(--ink-soft);margin-top:10px}
 
   section{padding:88px 0}
   section.wash{background:var(--wash)}
@@ -180,7 +185,7 @@
       <a href="#how" class="hide">How it works</a>
       <a href="#pricing" class="hide">Pricing</a>
       <a href="https://app.bidalize.com/login">Sign in</a>
-      <a href="https://app.bidalize.com/register" class="btn">Start free</a>
+      <a href="https://app.bidalize.com/register" class="btn">Get started</a>
     </div>
   </div>
 </nav>
@@ -191,10 +196,9 @@
     <h1>Your suppliers email quotes the way they always have. <em>You get one comparison you can defend.</em></h1>
     <p class="lede">Bidalize reads PDFs, photos and email replies in any language, puts every quote on one sheet in your currency, tells you where to negotiate, and keeps an audit log of every figure changed, every decision made and every sign-off.</p>
     <div class="cta-row">
-      <a href="https://app.bidalize.com/register" class="btn">Start free</a>
-      <a href="#how" class="btn btn-ghost">See how it works</a>
+      <a href="https://app.bidalize.com/register" class="btn">Get started</a>
+      <a href="#videos" class="btn btn-ghost">Watch the 1-minute video</a>
     </div>
-    <div class="fineprint">Your first 3 RFPs are free, with every feature.</div>
     <div class="ticks"><span>No supplier portal</span><span>No supplier logins</span><span>Approvers sign off from an email</span><span>Full audit log</span></div>
 
     <div class="shot">
@@ -204,6 +208,28 @@
     <div class="cap">The comparison sheet in the app. Example request with test data.</div>
   </div>
 </header>
+
+<section id="videos" style="padding-top:40px">
+  <div class="wrap">
+    <div class="kicker">See it in action</div>
+    <h2>Two short videos.</h2>
+    <p class="intro">The first shows the problem Bidalize solves. The second walks through a real request, from requisition to signed-off award, with test data.</p>
+    <div class="vids">
+      <figure class="vid">
+        <video controls preload="none" playsinline poster="/video-overview-poster.jpg" width="1920" height="1080">
+          <source src="/bidalize-overview.mp4" type="video/mp4">
+        </video>
+        <figcaption><b>Why Bidalize</b> · 1 min</figcaption>
+      </figure>
+      <figure class="vid">
+        <video controls preload="none" playsinline poster="/video-demo-poster.jpg" width="1920" height="1080">
+          <source src="/bidalize-demo.mp4" type="video/mp4">
+        </video>
+        <figcaption><b>Product walkthrough</b> · 1 min 40 s</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
 
 <section id="modules" style="padding-top:40px">
   <div class="wrap">
@@ -390,7 +416,7 @@
   <div class="wrap">
     <div class="kicker">Pricing</div>
     <h2>Pay for the people who log in. Approvers are free.</h2>
-    <p class="intro">Every plan has every feature of its modules. Your first 3 RFPs are free, with every feature — then choose a plan.</p>
+    <p class="intro">Every plan has every feature of its modules. Plans are priced by the number of people who log in — talk to us for a quote.</p>
     <div class="plans">
       <div class="plan"><div class="tag">Sourcing</div><h3>Sourcing</h3><div class="who">Up to 5 users</div>
         <ul><li>Email-in quotes, any format, any language</li><li>Comparison sheets and split awards</li><li>Negotiation notes</li><li>Audit log and frozen award record</li><li>Email sign-off — approvers free</li><li>Excel and CSV downloads</li></ul>
@@ -402,7 +428,7 @@
         <ul><li>Bulk checks against official tax registers</li><li>Flags tax numbers registered to another company</li><li>Download the results</li><li>More countries and checks coming soon</li></ul>
         <a href="mailto:hello@bidalize.com?subject=Bidalize%20Supplier%20Check%20pricing" class="btn btn-ghost">Talk to us</a></div>
     </div>
-    <p class="price-note">Need more users, or want to start straight away? <a href="https://app.bidalize.com/register" style="color:var(--brand);font-weight:500">Start free</a> — your first 3 RFPs cost nothing.</p>
+    <p class="price-note">Need more users, or a plan for your whole team? <a href="mailto:hello@bidalize.com" style="color:var(--brand);font-weight:500">Talk to us</a>.</p>
   </div>
 </section>
 
@@ -417,7 +443,7 @@
     <details><summary>How do negotiation notes work?</summary><p>For each supplier they list the gap to the leader, the items where someone else is cheaper and by how much, and terms that are weaker than the best offer. They're worked out from the sheet, so they change when the sheet changes.</p></details>
     <details><summary>Does it connect to my ERP?</summary><p>Today it exports a CSV with fixed column names that your ERP or reporting tool can import. A direct connection isn't available yet.</p></details>
     <details><summary>What about quotes that arrive on WhatsApp?</summary><p>Forward them, or save the photo or PDF and upload it to the request. They're read the same way as emailed quotes.</p></details>
-    <details><summary>What is free?</summary><p>Your first 3 RFPs, with every feature. After that you choose a plan by the number of people who log in. Approvers who sign off by email are always free.</p></details>
+    <details><summary>How is it priced?</summary><p>By the number of people who log in. Every plan has every feature of its modules. Approvers who sign off by email don’t need a login and are always free.</p></details>
   </div>
 </section>
 
@@ -425,7 +451,7 @@
   <div class="wrap">
     <h2>Run your next request on Bidalize.</h2>
     <p>Your suppliers won't notice a thing. You'll have the comparison — and the record — the same day.</p>
-    <div class="cta-row" style="justify-content:center"><a href="https://app.bidalize.com/register" class="btn">Start free</a><a href="mailto:hello@bidalize.com" class="btn btn-ghost">Talk to us</a></div>
+    <div class="cta-row" style="justify-content:center"><a href="https://app.bidalize.com/register" class="btn">Get started</a><a href="mailto:hello@bidalize.com" class="btn btn-ghost">Talk to us</a></div>
   </div>
 </div>
 
