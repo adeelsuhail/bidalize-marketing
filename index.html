@@ -3,19 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <title>Bidalize — Supplier quotes to a defensible award</title>
 <meta name="description" content="Your suppliers email quotes the way they always have. Bidalize reads them in any format and language, puts them on one comparison sheet, and keeps the record and audit log of every decision.">
 <!-- Fonts via link tags (not @import) so the preload scanner finds them at once — see the note in git history. -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
 <style>
   :root{
     --ink:#14171f; --ink-soft:#5a6072; --line:#e4e6ec; --paper:#ffffff;
     --wash:#f6f7f9; --brand:#1b3a8c; --brand-soft:#eef2fb; --win:#127a53; --win-soft:#e7f4ee;
     --amber:#b06a00; --amber-soft:#fbf3e4; --red:#a32d2d; --red-soft:#fcebeb;
     --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-    --serif:'Fraunces',Georgia,serif; --mono:'IBM Plex Mono',monospace;
+    --mono:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -36,14 +38,15 @@
 
   .hero{padding:72px 0 30px}
   .eyebrow{font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--brand);font-weight:600;margin-bottom:18px}
-  h1{font-family:var(--serif);font-weight:500;font-size:52px;line-height:1.06;letter-spacing:-.02em;max-width:17ch}
-  h1 em{font-style:italic;color:var(--brand)}
-  .lede{font-size:18px;color:var(--ink-soft);max-width:58ch;margin:22px 0 28px}
+  h1{font-weight:600;font-size:48px;line-height:1.08;letter-spacing:-.032em;max-width:22ch}
+  h1 span,h1 em{display:block;text-wrap:balance}
+  h1 em{font-style:normal;color:var(--brand)}
+  .lede{font-size:18px;color:var(--ink-soft);max-width:58ch;margin:22px 0 28px;text-wrap:pretty}
   .cta-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
   .fineprint{font-size:13px;color:var(--ink-soft);margin-top:14px}
   .ticks{display:flex;gap:20px;flex-wrap:wrap;margin-top:22px;font-size:14px;color:var(--ink-soft)}
   .ticks span:before{content:"✓";color:var(--win);font-weight:700;margin-right:6px}
-  @media(max-width:700px){h1{font-size:38px}}
+  @media(max-width:700px){h1{font-size:34px}}
 
   .shot{margin-top:44px;border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 24px 60px -30px rgba(20,23,31,.28);background:var(--paper)}
   .shot-bar{display:flex;align-items:center;gap:8px;padding:11px 16px;background:var(--wash);border-bottom:1px solid var(--line)}
@@ -61,9 +64,9 @@
   section{padding:88px 0}
   section.wash{background:var(--wash)}
   .kicker{font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--brand);font-weight:600;margin-bottom:12px}
-  h2{font-family:var(--serif);font-weight:500;font-size:38px;line-height:1.12;letter-spacing:-.015em;max-width:24ch;margin-bottom:14px}
+  h2{font-weight:600;font-size:32px;line-height:1.16;letter-spacing:-.025em;max-width:28ch;margin-bottom:14px;text-wrap:balance}
   .intro{font-size:17px;color:var(--ink-soft);max-width:62ch;margin-bottom:36px}
-  @media(max-width:700px){h2{font-size:30px}}
+  @media(max-width:700px){h2{font-size:26px}}
   .two{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
   @media(max-width:900px){.two{grid-template-columns:1fr}}
 
@@ -115,25 +118,26 @@
   .file p{color:var(--ink-soft);font-size:14px;margin-top:4px}
   .file code{display:block;font-family:var(--mono);font-size:11.5px;color:var(--ink-soft);background:var(--wash);border:1px solid var(--line);border-radius:6px;padding:8px 10px;margin-top:10px;word-break:break-word}
 
-  .sc{background:#14171f;color:#fff;border-radius:18px;padding:44px;display:grid;grid-template-columns:1.2fr 1fr;gap:36px;align-items:center}
+  .sc{background:#122a6b;color:#fff;border-radius:18px;padding:44px;display:grid;grid-template-columns:1.2fr 1fr;gap:36px;align-items:center}
   @media(max-width:860px){.sc{grid-template-columns:1fr;padding:28px}}
-  .sc h2{color:#fff}.sc p{color:#c7cbd6}.sc .kicker{color:#9fb2ea}
-  .sc .soon{margin-top:16px;font-size:13.5px;color:#9aa0ae}
+  .sc h2{color:#fff}.sc p{color:#c3cdea}.sc .kicker{color:#9fb2ea}
+  .sc .soon{margin-top:16px;font-size:13.5px;color:#9fb0de}
   .sc .soon b{color:#fff;font-weight:500}
-  .sc .tbl{background:#1d2130;border:1px solid #2b3040;border-radius:12px;padding:6px 16px;font-size:14px}
-  .sc .tbl div{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid #2b3040}
+  .sc .tbl{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:6px 16px;font-size:14px}
+  .sc .tbl div{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.1)}
   .sc .tbl div:last-child{border:0}
   .st{font-size:11.5px;font-weight:600;border-radius:99px;padding:1px 9px;white-space:nowrap}
   .st.ok{background:#cfefe3;color:#0b5a46}.st.bad{background:#f8d5d5;color:#8a1f1f}.st.wn{background:#f6e3c2;color:#7a4708}
   .sc .btn{background:#fff;color:var(--ink);border-color:#fff}
-  .sc .btn-ghost{background:transparent;color:#fff;border-color:#3a4052}
+  .sc .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.35)}
+  .sc .btn:hover{background:#e9eefb}.sc .btn-ghost:hover{background:rgba(255,255,255,.1)}
 
   .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
   @media(max-width:900px){.plans{grid-template-columns:1fr}}
   .plan{border:1px solid var(--line);border-radius:14px;padding:26px;background:#fff;display:flex;flex-direction:column}
   .plan.hl{border-color:var(--brand);box-shadow:0 0 0 1px var(--brand)}
   .plan .tag{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--brand);margin-bottom:6px}
-  .plan h3{font-family:var(--serif);font-weight:500;font-size:23px}
+  .plan h3{font-weight:600;font-size:18px;letter-spacing:-.01em}
   .plan .who{color:var(--ink-soft);font-size:14px;margin:4px 0 16px}
   .plan .price{font-size:15px;color:var(--ink);margin-top:8px}
   .plan .price b{font-size:30px;font-weight:600;letter-spacing:-.02em}
@@ -161,7 +165,7 @@
   .mod{border:1px solid var(--line);border-radius:16px;padding:28px;background:#fff;display:flex;flex-direction:column}
   .mod.main{border-color:var(--brand);box-shadow:0 0 0 1px var(--brand)}
   .mod .tag{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--brand);margin-bottom:8px}
-  .mod h3{font-family:var(--serif);font-weight:500;font-size:27px;line-height:1.15;margin-bottom:8px}
+  .mod h3{font-weight:600;font-size:22px;line-height:1.2;letter-spacing:-.02em;margin-bottom:8px}
   .mod p{color:var(--ink-soft);font-size:15px;margin-bottom:18px}
   .feats{display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;margin-bottom:22px}
   .mod:not(.main) .feats{grid-template-columns:1fr}
@@ -181,7 +185,7 @@
 
 <nav>
   <div class="wrap">
-    <a class="logo" href="/"><img src="/bidalize-logo.png" alt="Bidalize" style="height:34px;width:auto" /></a>
+    <a class="logo" href="/"><img src="/bidalize-wordmark.png" alt="Bidalize" width="105" height="28" style="height:28px;width:auto;display:block" /></a>
     <div class="navlinks">
       <a href="#sourcing" class="hide">Sourcing</a>
       <a href="#supplier-check" class="hide">Supplier Check</a>
@@ -196,7 +200,7 @@
 <header class="hero">
   <div class="wrap">
     <div class="eyebrow">Bidalize Sourcing · from supplier quotes to award</div>
-    <h1>Your suppliers email quotes the way they always have. <em>You get one comparison you can defend.</em></h1>
+    <h1><span>Your suppliers email quotes the way they always have.</span> <em>You get one comparison you can defend.</em></h1>
     <p class="lede">Bidalize reads PDFs, photos and email replies in any language, puts every quote on one sheet in your currency, tells you where to negotiate, and keeps an audit log of every figure changed, every decision made and every sign-off.</p>
     <div class="cta-row">
       <a href="https://app.bidalize.com/register" class="btn">Get started</a>
@@ -256,7 +260,7 @@
           <a href="#audit">Email sign-off, approvers free</a>
           <a href="#audit">Audit log and frozen record</a>
           <a href="#downloads">Excel and CSV downloads</a>
-          <a href="#how">Requisition to RFP in one step</a>
+          <a href="#how">Requisition to request in one step</a>
         </div>
         <a class="go" href="#sourcing">See Sourcing →</a>
       </div>
@@ -409,7 +413,7 @@
         <div><span>Northline Traders</span><span class="st ok">Active</span></div>
         <div><span>Harbor Supplies</span><span class="st ok">Active</span></div>
         <div><span>Metro Janitorial</span><span class="st bad">Not on register</span></div>
-        <div><span>Eastway Packaging</span><span class="st wn">Tax number belongs to another company</span></div>
+        <div><span>Eastway Packaging</span><span class="st wn">Registered to another company</span></div>
       </div>
     </div>
   </div>
