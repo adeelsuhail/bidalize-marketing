@@ -3,6 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://bidalize.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bidalize">
+<meta property="og:url" content="https://bidalize.com/">
+<meta property="og:title" content="Bidalize: supplier quotes to a defensible award">
+<meta property="og:description" content="Your suppliers email quotes the way they always have. Bidalize reads them in any format and language, puts them on one comparison sheet, and keeps the record and audit log of every decision.">
+<meta property="og:image" content="https://bidalize.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <title>Bidalize — Supplier quotes to a defensible award</title>
@@ -179,6 +189,11 @@
   .subnav{display:flex;gap:8px;flex-wrap:wrap;margin-top:-10px;margin-bottom:34px}
   .subnav a{font-size:13px;border:1px solid var(--line);border-radius:99px;padding:4px 12px;color:var(--ink-soft);background:#fff}
   .subnav a:hover{color:var(--brand);border-color:var(--brand)}
+  .footlinks{display:flex;gap:22px;flex-wrap:wrap}
+  footer a:hover{color:var(--ink)}
+  .sc>*{min-width:0}
+  @media(max-width:400px){.sc .tbl div{flex-wrap:wrap}}
+  @media(max-width:640px){.navlinks a:not(.btn):not(.hide),.footlinks a{display:inline-block;padding:6px 0}}
 </style>
 </head>
 <body>
@@ -377,7 +392,7 @@
       <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div><h3>Quotes locked before award</h3><p>Nothing can arrive and change the comparison afterwards. Reopening needs a reason, and it's logged.</p></div>
       <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16z"/></svg></div><h3>Every change logged</h3><p>Who typed over which figure, what it was before, and when. Deleting a quote needs a reason, and what was deleted is kept.</p></div>
       <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 4v16"/></svg></div><h3>Frozen award sheets</h3><p>The sheet an award was made from can't be edited. Reversing an award needs a reason, and both stay on the record.</p></div>
-      <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg></div><h3>Sign-off by email</h3><p>Approvers get a link with the sheet and the reasons it needs sign-off. No account needed, and they don't count as users.</p></div>
+      <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6"/></svg></div><h3>Sign-off by email</h3><p>Approvers get a link with the sheet and the reasons it needs sign-off. No account needed, and they don't count as logins.</p></div>
       <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 7l9 4 9-4z"/><path d="m3 12 9 4 9-4M3 17l9 4 9-4"/></svg></div><h3>Split awards</h3><p>Different items to different suppliers, each with its own PO amount, and duties paid to others kept separate.</p></div>
       <div class="card"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V3h12v6M6 17H4v-6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v6h-2"/><rect x="6" y="14" width="12" height="7"/></svg></div><h3>Printable record</h3><p>Request, quotes, comparison, decision and sign-off on one document, ready to file.</p></div>
     </div>
@@ -431,7 +446,7 @@
         <a href="https://app.bidalize.com/register" class="btn btn-ghost">Get started</a></div>
       <div class="plan hl"><h3>Team</h3>
         <div class="price"><b>$60</b> a month <span class="std">launch price · standard price $99</span></div><div class="who">5 logins · unlimited sourcing requests</div>
-        <ul><li>Every Sourcing feature</li><li>Supplier Check included</li><li>Roles per person: view, buyer, admin</li><li>Email sign-off — approvers free</li></ul>
+        <ul><li>Every Sourcing feature</li><li>Supplier Check included</li><li>Roles per person: viewer, buyer, admin</li><li>Email sign-off — approvers free</li></ul>
         <a href="https://app.bidalize.com/register" class="btn">Get started</a></div>
       <div class="plan"><h3>Business</h3>
         <div class="price"><b>$75</b> a month <span class="std">launch price · standard price $119</span></div><div class="who">10 logins · unlimited sourcing requests</div>
@@ -470,8 +485,8 @@
 
 <footer>
   <div class="wrap">
-    <div>© 2026 Bidalize · Vorapure UK Ltd</div>
-    <div style="display:flex;gap:24px;flex-wrap:wrap"><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/agreement">Customer agreement</a><a href="/cookies">Cookies</a><a href="/acceptable-use">Acceptable use</a><a href="mailto:hello@bidalize.com">hello@bidalize.com</a></div>
+    <div>© 2026 Bidalize · Vorapure UK Ltd · Company No. 17138078</div>
+    <div class="footlinks"><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/agreement">Customer Agreement</a><a href="/cookies">Cookies</a><a href="/acceptable-use">Acceptable Use</a><a href="mailto:hello@bidalize.com">hello@bidalize.com</a></div>
   </div>
 </footer>
 

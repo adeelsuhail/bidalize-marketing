@@ -3,9 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://bidalize.com/agreement">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bidalize">
+<meta property="og:url" content="https://bidalize.com/agreement">
+<meta property="og:title" content="Customer Agreement · Bidalize">
+<meta property="og:description" content="The one-page commercial terms accepted at sign-up: plans, prices, how to leave and what happens to your data.">
+<meta property="og:image" content="https://bidalize.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <title>Customer Agreement — Bidalize</title>
+<meta name="description" content="The one-page commercial terms accepted at sign-up: plans, prices, how to leave and what happens to your data.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
@@ -37,7 +48,8 @@
   .fill{background:#fff5e6;border-bottom:1px dashed #d9a441;padding:0 3px;color:#8a5a00;font-weight:500}
   footer{border-top:1px solid var(--line);padding:36px 0;font-size:13px;color:var(--ink-soft)}
   footer .wrap{max-width:1080px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
-  footer a{color:var(--ink-soft)}
+  footer a{color:var(--ink-soft);text-decoration:none}footer a:hover{color:var(--ink)}
+  .footlinks{display:flex;gap:22px;flex-wrap:wrap}
   @media(max-width:640px){h1{font-size:30px}.navlinks{gap:16px}.navlinks .hide{display:none}}
   .one h2{font-size:17px;margin:20px 0 4px;font-family:var(--sans);font-weight:600;letter-spacing:0}
   .one p,.one li{font-size:14.5px;margin:5px 0;line-height:1.5}
@@ -48,6 +60,10 @@
   .sig{border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-top:22px;font-size:14px;color:#2a2e3a;background:var(--wash)}
   .printbtn{font:inherit;font-size:13.5px;border:1px solid var(--line);background:#fff;border-radius:8px;padding:7px 12px;cursor:pointer;margin-top:14px}
   @media print{nav,footer,.printbtn,.notice,.eyebrow{display:none}body{line-height:1.38}.wrap{max-width:none;padding:0}header.doc{padding:0 0 6px;border:none}main{padding:0}h1{font-size:21px}.updated{margin-top:2px;font-size:10.5px}.one h2{margin:9px 0 1px;font-size:12.5px}.one p,.one li,table.pl{font-size:10.6px;margin:2px 0;line-height:1.38}table.pl th,table.pl td{padding:3px 7px}.sig{margin-top:10px;padding:8px 10px;font-size:10.4px}@page{size:A4;margin:13mm 15mm}}
+  .tscroll{overflow-x:auto}
+  @media(max-width:640px){table,table.pl{font-size:13px}th,td,table.pl th,table.pl td{padding:6px 7px}}
+  @media(max-width:640px){.navlinks a,.footlinks a{display:inline-block;padding:6px 0}}
+  @media print{.tscroll{overflow:visible}}
 </style>
 </head>
 <body>
@@ -82,12 +98,12 @@
     <p>Use of Bidalize Sourcing and Bidalize Supplier Check for your organisation, on the plan you choose. Every plan has every feature. People who only sign off awards by email do not need a login and are free.</p>
 
     <h2>2. Plans and price</h2>
-    <table class="pl">
+    <div class="tscroll"><table class="pl">
       <tr><th>Plan</th><th>Logins</th><th>Sourcing requests</th><th>Price per month</th><th>Launch price per month</th></tr>
       <tr><td>Free</td><td>3</td><td>5, in the first 30 days</td><td>USD 0</td><td>USD 0</td></tr>
       <tr><td>Team</td><td>5</td><td>Unlimited</td><td>USD 99</td><td>USD 60</td></tr>
       <tr><td>Business</td><td>10</td><td>Unlimited</td><td>USD 119</td><td>USD 75</td></tr>
-    </table>
+    </table></div>
     <ul>
       <li><b>Free</b> ends after 30 days or 5 sourcing requests, whichever comes first. After that you cannot start a new request until you choose a paid plan; requests already started can be finished, and everything stays available to open and download.</li>
       <li><b>Launch price</b> applies to subscriptions started on or before 31 December 2026, and stays for as long as the subscription continues without a break.</li>
@@ -133,7 +149,7 @@
 <footer>
   <div class="wrap">
     <div>© 2026 Bidalize · Vorapure UK Ltd · Company No. 17138078</div>
-    <div style="display:flex;gap:22px"><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/agreement">Customer Agreement</a><a href="/cookies">Cookies</a><a href="/acceptable-use">Acceptable Use</a></div>
+    <div class="footlinks"><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/agreement">Customer Agreement</a><a href="/cookies">Cookies</a><a href="/acceptable-use">Acceptable Use</a><a href="mailto:hello@bidalize.com">hello@bidalize.com</a></div>
   </div>
 </footer>
 
