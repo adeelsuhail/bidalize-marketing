@@ -135,6 +135,9 @@
   .plan .tag{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--brand);margin-bottom:6px}
   .plan h3{font-family:var(--serif);font-weight:500;font-size:23px}
   .plan .who{color:var(--ink-soft);font-size:14px;margin:4px 0 16px}
+  .plan .price{font-size:15px;color:var(--ink);margin-top:8px}
+  .plan .price b{font-size:30px;font-weight:600;letter-spacing:-.02em}
+  .plan .price .std{display:block;font-size:12.5px;color:var(--ink-soft);margin-top:2px}
   .plan ul{padding-left:18px;margin-bottom:22px;color:var(--ink-soft);font-size:14.5px}
   .plan li{margin:3px 0}
   .plan .btn{margin-top:auto;text-align:center}
@@ -415,20 +418,24 @@
 <section id="pricing" class="wash">
   <div class="wrap">
     <div class="kicker">Pricing</div>
-    <h2>Pay for the people who log in. Approvers are free.</h2>
-    <p class="intro">Every plan has every feature of its modules. Plans are priced by the number of people who log in — talk to us for a quote.</p>
+    <h2>Start free. Pay for the people who log in.</h2>
+    <p class="intro">Every plan has every feature. Supplier Check is free on all of them. Approvers who sign off by email don't need a login and are free. Paid plans are monthly, with no long contract.</p>
     <div class="plans">
-      <div class="plan"><div class="tag">Sourcing</div><h3>Sourcing</h3><div class="who">Up to 5 users</div>
-        <ul><li>Email-in quotes, any format, any language</li><li>Comparison sheets and split awards</li><li>Negotiation notes</li><li>Audit log and frozen award record</li><li>Email sign-off — approvers free</li><li>Excel and CSV downloads</li></ul>
-        <a href="mailto:hello@bidalize.com?subject=Bidalize%20Sourcing%20pricing" class="btn btn-ghost">Talk to us</a></div>
-      <div class="plan hl"><div class="tag">Both modules</div><h3>Sourcing + Supplier Check</h3><div class="who">Up to 10 users</div>
-        <ul><li>Everything in Sourcing</li><li>Everything in Supplier Check</li><li>One login for both</li><li>Roles per person: view, buyer, admin</li></ul>
-        <a href="mailto:hello@bidalize.com?subject=Bidalize%20Sourcing%20%2B%20Supplier%20Check%20pricing" class="btn">Talk to us</a></div>
-      <div class="plan"><div class="tag">Supplier Check</div><h3>Supplier Check</h3><div class="who">Up to 2 users</div>
-        <ul><li>Bulk checks against official tax registers</li><li>Flags tax numbers registered to another company</li><li>Download the results</li><li>More countries and checks coming soon</li></ul>
-        <a href="mailto:hello@bidalize.com?subject=Bidalize%20Supplier%20Check%20pricing" class="btn btn-ghost">Talk to us</a></div>
+      <div class="plan"><h3>Free</h3>
+        <div class="price"><b>$0</b></div><div class="who">3 logins · 5 sourcing requests in your first 30 days</div>
+        <ul><li>Every Sourcing feature</li><li>Supplier Check included</li><li>No card needed</li></ul>
+        <a href="https://app.bidalize.com/register" class="btn btn-ghost">Get started</a></div>
+      <div class="plan hl"><h3>Team</h3>
+        <div class="price"><b>$60</b> a month <span class="std">launch price · standard price $99</span></div><div class="who">5 logins · unlimited sourcing requests</div>
+        <ul><li>Every Sourcing feature</li><li>Supplier Check included</li><li>Roles per person: view, buyer, admin</li><li>Email sign-off — approvers free</li></ul>
+        <a href="https://app.bidalize.com/register" class="btn">Get started</a></div>
+      <div class="plan"><h3>Business</h3>
+        <div class="price"><b>$75</b> a month <span class="std">launch price · standard price $119</span></div><div class="who">10 logins · unlimited sourcing requests</div>
+        <ul><li>Everything in Team</li><li>Twice the logins</li><li>More than 10 logins? <a href="mailto:hello@bidalize.com" style="color:var(--brand)">Talk to us</a></li></ul>
+        <a href="https://app.bidalize.com/register" class="btn btn-ghost">Get started</a></div>
     </div>
-    <p class="price-note">Need more users, or a plan for your whole team? <a href="mailto:hello@bidalize.com" style="color:var(--brand);font-weight:500">Talk to us</a>.</p>
+    <p class="price-note"><b>Launch price</b> is for subscriptions started by 31 December 2026, and you keep it for as long as you stay subscribed. Prices are in US dollars and exclude tax. Supplier Check is free while it is in early access.</p>
+    <p class="price-note" style="margin-top:8px">The details: <a href="/agreement" style="color:var(--brand);font-weight:500">Customer Agreement (one page)</a> · <a href="/terms#ending" style="color:var(--brand);font-weight:500">What happens to your data if you stop</a> · <a href="/terms" style="color:var(--brand);font-weight:500">Terms</a> · <a href="/privacy" style="color:var(--brand);font-weight:500">Privacy</a></p>
   </div>
 </section>
 
@@ -443,7 +450,9 @@
     <details><summary>How do negotiation notes work?</summary><p>For each supplier they list the gap to the leader, the items where someone else is cheaper and by how much, and terms that are weaker than the best offer. They're worked out from the sheet, so they change when the sheet changes.</p></details>
     <details><summary>Does it connect to my ERP?</summary><p>Today it exports a CSV with fixed column names that your ERP or reporting tool can import. A direct connection isn't available yet.</p></details>
     <details><summary>What about quotes that arrive on WhatsApp?</summary><p>Forward them, or save the photo or PDF and upload it to the request. They're read the same way as emailed quotes.</p></details>
-    <details><summary>How is it priced?</summary><p>By the number of people who log in. Every plan has every feature of its modules. Approvers who sign off by email don’t need a login and are always free.</p></details>
+    <details><summary>How is it priced?</summary><p>You can run 5 sourcing requests free in your first 30 days, with every feature. After that, Team is for up to 5 logins and Business for up to 10, paid monthly with no long contract. Supplier Check is free on every plan, and approvers who sign off by email are always free.</p></details>
+    <details><summary>What happens to our data if we stop paying?</summary><p>Nothing is lost straight away. After a failed payment everything works for 14 days. Then your organisation is read-only for 90 days, and you can download all of it: award records, quote documents, sheets and the activity log. After that we delete it. The full timeline is in the <a href="/terms#ending" style="color:var(--brand)">Terms</a>.</p></details>
+    <details><summary>Do we sign a contract?</summary><p>An administrator accepts a one-page <a href="/agreement" style="color:var(--brand)">Customer Agreement</a> when creating the account. If your company needs a copy signed by both parties, we can provide one.</p></details>
   </div>
 </section>
 
@@ -458,7 +467,7 @@
 <footer>
   <div class="wrap">
     <div>© 2026 Bidalize · Vorapure UK Ltd</div>
-    <div style="display:flex;gap:24px;flex-wrap:wrap"><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/cookies">Cookies</a><a href="/acceptable-use">Acceptable use</a><a href="mailto:hello@bidalize.com">hello@bidalize.com</a></div>
+    <div style="display:flex;gap:24px;flex-wrap:wrap"><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/agreement">Customer agreement</a><a href="/cookies">Cookies</a><a href="/acceptable-use">Acceptable use</a><a href="mailto:hello@bidalize.com">hello@bidalize.com</a></div>
   </div>
 </footer>
 
