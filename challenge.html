@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://www.bidalize.com/challenge">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bidalize">
+<meta property="og:url" content="https://www.bidalize.com/challenge">
+<meta property="og:title" content="Who will you award? The 60-second challenge">
+<meta property="og:description" content="Three supplier quotes, exactly as they arrived: a PDF, a photo, an email, sometimes in Arabic or Urdu. Pick the right award in 60 seconds, then watch Bidalize's minute.">
+<meta property="og:image" content="https://www.bidalize.com/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>Who will you award? — the 60-second challenge · Bidalize</title>
+<meta name="description" content="Three supplier quotes, exactly as they arrived: a PDF, a photo, an email, sometimes in Arabic or Urdu. Pick the right award in 60 seconds, then watch what Bidalize does with the same documents.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Naskh+Arabic:wght@400;600&family=Noto+Nastaliq+Urdu&display=swap">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#14171f;background:#fff;line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  nav.site{padding:18px 0;border-bottom:1px solid #e4e6ec;position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);z-index:20}
+  nav.site .wrap{max-width:1080px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+  .navlinks{display:flex;gap:24px;align-items:center;font-size:14px;color:#5a6072}
+  .navlinks a:hover{color:#14171f}
+  .btn{display:inline-block;background:#1b3a8c;color:#fff;padding:9px 18px;border-radius:8px;font-size:14px;font-weight:500;transition:.15s;border:1px solid #1b3a8c;cursor:pointer}
+  .btn:hover{background:#16306f}
+  @media(max-width:860px){.navlinks .hide{display:none}}
+  footer.site{padding:32px 0;border-top:1px solid #e4e6ec;font-size:13.5px;color:#5a6072}
+  footer.site .wrap{max-width:1080px;margin:0 auto;padding:0 28px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+  .footlinks{display:flex;gap:22px;flex-wrap:wrap}
+  footer.site a:hover{color:#14171f}
+  @media(max-width:640px){.navlinks a:not(.btn):not(.hide),.footlinks a{display:inline-block;padding:6px 0}}
+</style>
+<style>
+/* Layout: one column, 1040px wrap. Intro opens straight on a challenge brief; documents three-up on desktop, stacked on phone; reveal = verdict, Bidalize's minute (replayed timeline), comparison, award cards. */
+
+:root{
+  --bg:#ffffff; --fg:#14171f; --muted:#5a6072; --rule:#e4e6ec; --paper:#ffffff; --paper-2:#f6f7f9;
+  --accent:#1b3a8c; --accent-fg:#ffffff; --warn:#b06a00; --warn-bg:#fbf3e4; --good:#127a53; --good-bg:#e7f4ee; --bad:#a32d2d; --bad-bg:#fcebeb;
+  --display:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; --body:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; --mono:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;
+  --ar:"Noto Naskh Arabic","Segoe UI",Tahoma,sans-serif; --ur:"Noto Nastaliq Urdu","Noto Naskh Arabic",Tahoma,sans-serif;
+}
+*{box-sizing:border-box}
+.ch{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.5;padding:0 28px 56px}
+.ch .wrap{max-width:1080px;margin:0 auto;padding:0}
+.ch header{padding-block:28px 8px;display:flex;flex-wrap:wrap;gap:12px;align-items:baseline;justify-content:space-between;border-bottom:1px solid var(--rule)}
+.brand{font-family:var(--display);font-weight:600;font-size:18px}
+.brand span{color:var(--muted);font-family:var(--body);font-weight:400;font-size:13px;margin-left:10px}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(30px,5vw,44px);line-height:1.08;letter-spacing:-.03em;margin:28px 0 12px;text-wrap:balance;max-width:22ch}
+h2.sec{font-family:var(--display);font-weight:600;font-size:24px;margin:22px 0 10px;text-wrap:balance}
+.lede{max-width:62ch;color:var(--muted);font-size:17px;margin:0 0 18px}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+button.primary,a.primary{background:var(--accent);color:var(--accent-fg);border:0;border-radius:8px;padding:11px 20px;font:500 15px var(--body);cursor:pointer;text-decoration:none;display:inline-block}
+button:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.grid2{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:22px;align-items:start}
+@media (max-width:860px){.grid2{grid-template-columns:1fr}}
+.request{background:var(--paper-2);border:1px solid var(--rule);border-radius:8px;padding:16px 18px;margin:14px 0}
+.request table{width:100%;border-collapse:collapse;font-size:15px}
+.request th,.request td{text-align:left;padding:6px 0;border-bottom:1px solid var(--rule)}
+.request th{font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+td.n,th.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.must{margin:12px 0 0;padding:12px 14px;border-left:3px solid var(--accent);background:var(--paper);border-radius:0 6px 6px 0}
+.must ul{margin:4px 0 0;padding-left:18px} .must li{margin:2px 0}
+.others{display:flex;flex-direction:column;gap:8px}
+.others button{text-align:left;background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:10px 12px;font:inherit;color:inherit;cursor:pointer;display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.others button:hover{border-color:var(--accent)} .others button.cur{border-color:var(--accent);background:var(--paper-2)}
+.others .t{font-weight:500} .others .m{color:var(--muted);font-size:12px;white-space:nowrap} .others .ok{color:var(--good);font-size:12px;font-weight:600}
+.bar{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;position:sticky;top:64px;background:var(--bg);padding-block:12px;border-bottom:1px solid var(--rule);z-index:2}
+.timer{font-family:var(--mono);font-size:28px;font-variant-numeric:tabular-nums;min-width:4ch}
+.timer.low{color:var(--bad)}
+.docs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:20px}
+@media (max-width:860px){.docs{grid-template-columns:1fr}}
+.doc{min-width:0;display:flex;flex-direction:column;gap:10px}
+.doc .kind{font-size:12px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;font-weight:600}
+.paper{background:var(--paper);border:1px solid var(--rule);padding:18px;font-size:13.5px;line-height:1.45;overflow-x:auto;min-height:380px}
+.paper .lh{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.paper .co{font-family:var(--display);font-weight:600;font-size:17px}
+.paper table,.sheet table{width:100%;border-collapse:collapse}
+.paper td,.paper th{padding:4px 2px;border-bottom:1px solid var(--rule);vertical-align:top}
+tr.tot td{border-bottom:0;font-weight:600;padding-top:8px}
+.fine{font-size:11.5px;color:var(--muted);margin-top:10px}
+.pdfmark{display:inline-block;border:1px solid var(--rule);border-radius:3px;padding:1px 6px;font-size:11px;color:var(--muted)}
+.photo{background:#e9e4d8;padding:22px 18px 30px;border-radius:3px;position:relative;transform:rotate(-1.2deg);box-shadow:0 10px 24px rgba(0,0,0,.18);min-height:380px}
+.photo .sheet{background:#fbf9f3;color:#2a2420;padding:16px;transform:rotate(.6deg);font-family:"Courier New",Courier,monospace;font-size:13px;line-height:1.4;box-shadow:0 1px 2px rgba(0,0,0,.2)}
+.photo .sheet td,.photo .sheet th{border-bottom:1px dotted #b8ae9b;color:#2a2420;padding:4px 2px;vertical-align:top}
+.photo .sheet .fine{color:#5a5047}
+.photo .stamp{position:absolute;right:26px;bottom:34px;color:#8b2d2d;border:2px solid #8b2d2d;border-radius:4px;padding:2px 8px;font:600 11px var(--body);letter-spacing:.1em;transform:rotate(-8deg);opacity:.85}
+.photo .glare{position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.35),rgba(255,255,255,0) 45%);pointer-events:none;border-radius:3px}
+.email{background:var(--paper);border:1px solid var(--rule);overflow:hidden;min-height:380px}
+.email .hdr{padding:12px 16px;border-bottom:1px solid var(--rule);font-size:13px;color:var(--muted);display:grid;grid-template-columns:auto 1fr;gap:4px 10px}
+.email .hdr b{color:var(--fg);font-weight:500;overflow-wrap:anywhere}
+.email .bodytxt{padding:14px 16px;font-size:14px;white-space:pre-wrap;overflow-wrap:anywhere}
+.email .sig{color:var(--muted);font-size:13px}
+[dir=rtl]{direction:rtl;text-align:right} [dir=rtl] td.n,[dir=rtl] th.n{text-align:left}
+.lang-ar{font-family:var(--ar);font-size:15px} .lang-ur{font-family:var(--ur);font-size:15px;line-height:2}
+.photo .sheet.lang-ur,.photo .sheet.lang-ar{font-family:inherit}
+.pick-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;align-items:center}
+button.pick{background:var(--paper);color:var(--fg);border:1px solid var(--rule);border-radius:6px;padding:12px 18px;font:500 15px var(--body);cursor:pointer}
+button.pick:hover{border-color:var(--accent)}
+.reveal{margin-top:28px;border-top:1px solid var(--rule);padding-top:22px}
+.verdict{font-family:var(--display);font-size:clamp(22px,3.4vw,30px);font-weight:600;margin:0 0 6px;text-wrap:balance}
+.verdict-sub{color:var(--muted);margin:0 0 18px;max-width:70ch}
+.minute{background:var(--paper);border:1px solid var(--rule);border-radius:8px;padding:16px 18px;margin-bottom:18px}
+.minute .mh{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.minute .clock{font-family:var(--mono);font-size:26px;font-variant-numeric:tabular-nums}
+.tl{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.tl li{display:grid;grid-template-columns:5ch 1fr;gap:12px;align-items:baseline;opacity:0;transform:translateY(4px);transition:opacity .3s,transform .3s}
+.tl li.on{opacity:1;transform:none}
+.tl .t{font-family:var(--mono);color:var(--accent);font-variant-numeric:tabular-nums}
+.tl li.last .x{font-weight:600}
+.panel{background:var(--paper);border:1px solid var(--rule);border-radius:8px;overflow:hidden}
+.panel .ph{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;padding:12px 16px;border-bottom:1px solid var(--rule)}
+.panel .ph .eyebrow{color:var(--accent)}
+.status{font-size:13px;color:var(--muted)}
+.cmp{width:100%;border-collapse:collapse;font-size:14px}
+.cmp th,.cmp td{padding:9px 12px;border-bottom:1px solid var(--rule);text-align:left;vertical-align:top}
+.cmp th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.cmp tr.total td{font-weight:600;border-top:2px solid var(--rule)}
+.cmp tr.extra td{color:var(--muted);font-style:italic}
+.cmp td.best{color:var(--good);font-weight:600}
+.flag{display:inline-block;font-size:11px;padding:1px 6px;border-radius:3px;margin-left:6px;font-family:var(--body);font-weight:500;font-style:normal;vertical-align:middle;white-space:normal}
+.flag.w{background:var(--warn-bg);color:var(--warn)} .flag.b{background:var(--bad-bg);color:var(--bad)} .flag.g{background:var(--good-bg);color:var(--good)}
+.cmpwrap{overflow-x:auto}
+.awards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:18px}
+@media (max-width:860px){.awards{grid-template-columns:1fr}}
+.award{background:var(--paper-2);border:1px solid var(--rule);border-radius:8px;padding:14px 16px;min-width:0;display:flex;flex-direction:column;gap:8px}
+.award.win{border-color:var(--good)} .award.out{opacity:.8}
+.award .big{font-family:var(--mono);font-size:26px;font-variant-numeric:tabular-nums;line-height:1;overflow-wrap:anywhere}
+.award dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:3px 10px;font-size:13.5px}
+.award dt{color:var(--muted)} .award dd{margin:0}
+.award .badge{align-self:flex-start;font-size:12px;font-weight:600;padding:2px 8px;border-radius:3px}
+.badge.g{background:var(--good-bg);color:var(--good)} .badge.b{background:var(--bad-bg);color:var(--bad)} .badge.n{background:var(--paper);color:var(--muted);border:1px solid var(--rule)}
+.notes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:18px}
+@media (max-width:860px){.notes{grid-template-columns:1fr}}
+.note{min-width:0;border-left:3px solid var(--rule);padding:4px 0 4px 14px;font-size:14px}
+.note h3{margin:0 0 6px;font:600 15px var(--body)}
+.note ul{margin:0;padding-left:18px} .note li{margin:3px 0}
+.cta{margin-top:28px;background:var(--accent);color:var(--accent-fg);border-radius:8px;padding:22px 20px;display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between}
+.cta h2{font-family:var(--display);font-size:22px;margin:0 0 4px;font-weight:600}
+.cta p{margin:0;opacity:.9;max-width:60ch}
+.cta a{background:var(--accent-fg);color:var(--accent);text-decoration:none;font-weight:600;padding:12px 18px;border-radius:6px;white-space:nowrap}
+.foot{margin-top:28px;color:var(--muted);font-size:13px;max-width:72ch}
+.next{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.tally{font-size:14px;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){.tl li{transition:none}}
+</style>
+</head>
+<body>
+<nav class="site">
+  <div class="wrap">
+    <a class="logo" href="/"><img src="/bidalize-wordmark.png" alt="Bidalize" width="105" height="28" style="height:28px;width:auto;display:block" /></a>
+    <div class="navlinks">
+      <a href="/#sourcing" class="hide">Sourcing</a>
+      <a href="/#who" class="hide">Who it is for</a>
+      <a href="/#how" class="hide">How it works</a>
+      <a href="/#pricing" class="hide">Pricing</a>
+      <a href="https://app.bidalize.com/login">Sign in</a>
+      <a href="https://app.bidalize.com/register?src=challenge" class="btn">Start free</a>
+    </div>
+  </div>
+</nav>
+<div class="ch">
+<div class="wrap">
+<header>
+  <div class="brand">Who will you award? <span>the 60-second challenge</span></div>
+  <div class="eyebrow">Fictional suppliers, prices and documents</div>
+</header>
+
+<section id="brief">
+  <h1>Three quotes came in. Who will you award?</h1>
+  <p class="lede">You get the replies exactly as they arrived, the must-meets, and 60 seconds. Then watch what Bidalize does with the same three documents in its own minute.</p>
+  <div class="grid2">
+    <div>
+      <p class="eyebrow" id="brief-eyebrow"></p>
+      <h2 class="sec" id="brief-title"></h2>
+      <div class="request" id="request"></div>
+      <div class="must" id="must"></div>
+      <div class="next"><button class="primary" id="start">Start my 60 seconds</button></div>
+    </div>
+    <div>
+      <p class="eyebrow">Other challenges</p>
+      <div class="others" id="others"></div>
+      <p class="tally" id="tally"></p>
+    </div>
+  </div>
+</section>
+
+<section id="play" hidden>
+  <div class="bar">
+    <div><span class="eyebrow">Your time</span><div class="timer" id="timer">60</div></div>
+    <div class="status" id="goal"></div>
+  </div>
+  <div class="docs" id="docs"></div>
+  <div class="pick-row">
+    <span class="eyebrow">I would award</span>
+    <button class="pick" data-pick="A">Supplier A</button>
+    <button class="pick" data-pick="B">Supplier B</button>
+    <button class="pick" data-pick="C">Supplier C</button>
+  </div>
+</section>
+
+<section id="reveal" class="reveal" hidden>
+  <p class="eyebrow">Result</p>
+  <h2 class="verdict" id="verdict"></h2>
+  <p class="verdict-sub" id="verdict-sub"></p>
+
+  <div class="minute">
+    <div class="mh"><div><span class="eyebrow">Bidalize's minute</span><div class="status">Replay of the reading done when this challenge was built. Nothing is read live on this page.</div></div><div class="clock" id="clock">0:00</div></div>
+    <ol class="tl" id="tl"></ol>
+  </div>
+
+  <div class="panel">
+    <div class="ph"><span class="eyebrow" id="ptitle"></span><span class="status" id="pstatus"></span></div>
+    <div class="cmpwrap"><table class="cmp"><thead id="cmphead"></thead><tbody id="cmpbody"></tbody></table></div>
+  </div>
+
+  <div class="awards" id="awards"></div>
+  <div class="notes" id="notes"></div>
+
+  <div class="cta">
+    <div>
+      <h2>Your next three quotes, read the same way</h2>
+      <p>Send the request from Bidalize. Suppliers reply by email in any format or language. You get the comparison, the must-meet check, the approval trail and the award record. Your first 5 requests are free, no card needed.</p>
+    </div>
+    <a href="https://app.bidalize.com/register?src=challenge">Start free — 5 requests, no card</a>
+  </div>
+  <div class="next"><button class="primary" id="nextbtn">Next challenge</button><button class="pick" id="home">All challenges</button></div>
+  <p class="foot">Every supplier, price and document on this page is invented for the challenge. Bidalize's minute is a replay of a reading done once, when the challenge was built; on your real documents the service reads them when they arrive.</p>
+</section>
+</div>
+</div>
+
+<script id="data" type="application/json">[{"id":"workshop","title":"Workshop consumables","audience":"Manufacturers and traders","base":"USD","vat":0.05,"rfq":"RFQ-0417","must":["All five lines quoted","Delivery within 15 days"],"lines":[{"item":"Nitrile gloves, box of 100, size L","qty":40,"unit":"boxes"},{"item":"Cutting discs 115 × 1.0 mm, metal","qty":200,"unit":"pcs"},{"item":"Safety goggles, anti-fog","qty":25,"unit":"pcs"},{"item":"Cable ties 300 × 4.8 mm, pack of 100","qty":30,"unit":"packs"},{"item":"Penetrating oil spray, 400 ml","qty":24,"unit":"cans"}],"suppliers":[{"key":"A","name":"Al Noor Trading Est.","kind":"pdf","currency":"USD","fx":1,"vat_incl":false,"prices":[6.8,0.62,3.9,2.1,4.25],"delivery":"5 working days","days":7,"fine":"All prices exclude VAT at 5%. Delivery 5 working days ex-warehouse. Payment 30 days.","printed_total":658.5,"notes":["Clean PDF, all five lines.","Prices exclude VAT; 5% added to compare like with like.","Delivery 5 working days."],"total":691.43,"line_totals":[285.6,130.2,102.38,66.15,107.1]},{"key":"B","name":"Gulf Tools & Hardware","kind":"photo","currency":"USD","fx":1,"vat_incl":true,"prices":[7.4,0.65,null,2.45,4.3],"delivery":"3 days","days":3,"fine":"Delivery 3 days. Goggles out of stock. Prices incl. 5% VAT.","printed_total":562.7,"noncompliant":"Goggles not quoted, so not all five lines are covered","notes":["Printed grand total 562.70 does not match its own lines, which add to 602.70.","Goggles not quoted, so the order is incomplete.","Prices already include VAT. Delivery 3 days."],"total":602.7,"line_totals":[296.0,130.0,null,73.5,103.2]},{"key":"C","name":"Bright Star Industrial Supplies LLC","kind":"email","currency":"AED","fx":3.6725,"vat_incl":false,"prices":[24.5,2.4,15.0,7.9,15.75],"delivery":"7 days","days":7,"fine":"Delivery within 7 days. Prices valid 10 days. Per unit, excluding VAT.","notes":["Quoted in AED, per unit, with no quantities. Converted at 3.6725 and multiplied by your quantities.","Prices exclude VAT; 5% added.","Delivery 7 days."],"total":700.48,"line_totals":[280.19,137.24,107.22,67.76,108.07]}],"answer":"A"},{"id":"classroom","title":"Classroom furniture, two schools","audience":"School trusts and charities","base":"GBP","vat":0.2,"rfq":"RFQ-0231","must":["Whiteboards 1800 × 1200 mm","Delivery within 15 working days"],"lines":[{"item":"Stacking chairs, size mark 6","qty":60,"unit":"chairs"},{"item":"Tables 1200 × 600, height 710 mm","qty":30,"unit":"tables"},{"item":"Whiteboard 1800 × 1200, magnetic","qty":4,"unit":"boards"},{"item":"Teacher desk with pedestal","qty":4,"unit":"desks"},{"item":"Tray storage unit, 16 trays","qty":8,"unit":"units"}],"suppliers":[{"key":"A","name":"Pennine Educational Supplies","kind":"pdf","currency":"GBP","fx":1,"vat_incl":false,"prices":[28.5,89.0,142.0,210.0,168.0],"fixed":[{"label":"Delivery and installation, two sites","amount":380.0,"requested":true}],"delivery":"10 working days","days":10,"fine":"Prices exclude VAT. Delivery and installation charged separately as shown. Lead time 10 working days.","notes":["Complete, with a separate delivery and installation line of GBP 380 that is easy to miss.","Prices exclude VAT; 20% added.","10 working days."],"total":9014.4,"line_totals":[2052.0,3204.0,681.6,1008.0,1612.8]},{"key":"B","name":"Northgate Office & School","kind":"email","currency":"GBP","fx":1,"vat_incl":true,"prices":[33.6,104.4,129.0,246.0,198.0],"delivery":"8 weeks","days":40,"fine":"All prices include VAT and free delivery. Whiteboards supplied are 1200 × 900. Lead time 8 weeks.","noncompliant":"Whiteboard is 1200 × 900, not 1800 × 1200, and lead time is 8 weeks","notes":["Whiteboard quoted at 1200 × 900, not the 1800 × 1200 you asked for.","Lead time 8 weeks against a need of 15 working days.","Prices include VAT and delivery."],"total":8232.0,"line_totals":[2016.0,3132.0,516.0,984.0,1584.0]},{"key":"C","name":"Brightspace Furniture Ltd","kind":"photo","currency":"GBP","fx":1,"vat_incl":false,"per":[2,1,1,1,1],"prices":[58.0,92.0,139.0,205.0,172.0],"delivery":"15 working days","days":15,"fine":"Chairs priced per pair. Ex VAT. Carriage included. 15 working days.","notes":["Chairs are priced per pair, so 58.00 is 29.00 a chair.","Prices exclude VAT; 20% added.","15 working days, on the edge of your need date."],"total":8702.4,"line_totals":[2088.0,3312.0,667.2,984.0,1651.2]}],"answer":"C"},{"id":"relief","title":"Relief kit items, country office","audience":"NGO and UN-partner offices","base":"USD","vat":0.0,"rfq":"RFQ-KE-088","must":["Tarpaulin 4 × 6 m as specified","All five items quoted"],"lines":[{"item":"Jerry can 20 L, collapsible","qty":500,"unit":"pcs"},{"item":"Tarpaulin 4 × 6 m, reinforced","qty":300,"unit":"pcs"},{"item":"Laundry soap bar 200 g","qty":2000,"unit":"bars"},{"item":"Blanket, fleece 150 × 200 cm","qty":500,"unit":"pcs"},{"item":"Bucket 14 L with lid","qty":500,"unit":"pcs"}],"suppliers":[{"key":"A","name":"Savannah General Traders","kind":"photo","currency":"KES","fx":129.0,"vat_incl":true,"prices":[520,2450,45,980,310],"delivery":"7 days, Nairobi","days":7,"fine":"Prices in KES per piece. Delivery to Nairobi warehouse 7 days. Validity 14 days.","notes":["Quoted in Kenyan shillings per piece; converted at 129 KES to the dollar.","Complete, delivered to your warehouse.","7 days."],"total":13410.85,"line_totals":[2015.5,5697.67,697.67,3798.45,1201.55]},{"key":"B","name":"East Africa Supply Co.","kind":"pdf","currency":"USD","fx":1,"vat_incl":true,"prices":[4.1,18.6,0.34,7.4,2.35],"pct":[{"label":"Handling and documentation","rate":0.03}],"delivery":"10 days","days":10,"fine":"Prices in USD. A handling and documentation charge of 3% applies to the invoice total. Delivery 10 days.","notes":["A 3% handling charge sits in the small print and is added to the total.","Complete. 10 days.","Prices in USD, no VAT."],"total":13580.55,"line_totals":[2050.0,5580.0,680.0,3700.0,1175.0]},{"key":"C","name":"Harbour Logistics & Trading","kind":"email","currency":"USD","fx":1,"vat_incl":true,"prices":[3.95,17.9,null,7.1,2.2],"delivery":"12 days","days":12,"fine":"Soap not available this month. Tarpaulin offered is 3 × 5 m equivalent. Delivery 12 days.","noncompliant":"Soap not offered and the tarpaulin is a smaller size","notes":["Soap not offered, so the order is incomplete.","Tarpaulin offered is a smaller \"equivalent\" size, not what you specified.","12 days."],"total":11995.0,"line_totals":[1975.0,5370.0,null,3550.0,1100.0]}],"answer":"A"},{"id":"spares","title":"Spare parts, packaging line","audience":"Manufacturers","base":"USD","vat":0.0,"rfq":"RFQ-0552","must":["Quantities as requested, no minimum order","Delivery within 30 days"],"lines":[{"item":"Conveyor belt modular, 300 mm","qty":40,"unit":"m"},{"item":"Bearing 6205-2RS","qty":120,"unit":"pcs"},{"item":"Photoelectric sensor M18, PNP","qty":12,"unit":"pcs"},{"item":"Timing belt HTD 8M-1200-30","qty":10,"unit":"pcs"},{"item":"Pneumatic cylinder ISO 32 × 100","qty":6,"unit":"pcs"}],"suppliers":[{"key":"A","name":"Rheinwerk Antriebstechnik GmbH","kind":"pdf","currency":"EUR","fx":0.92,"vat_incl":true,"prices":[36.0,3.9,28.0,23.0,56.0],"delivery":"4 weeks","days":28,"fine":"Prices in EUR, ex works. Delivery 4 weeks. Incoterms EXW; freight to be arranged by buyer.","notes":["Quoted in EUR; converted at 0.92 EUR to the dollar.","Ex works, so freight is on top and not shown here.","4 weeks."],"total":3054.35,"line_totals":[1565.22,508.7,365.22,250.0,365.22]},{"key":"B","name":"Apex Industrial Components","kind":"email","currency":"USD","fx":1,"vat_incl":true,"per":[1,10,1,1,1],"prices":[36.5,38.0,27.9,23.5,52.0],"delivery":"2 weeks","days":14,"fine":"Bearings priced per box of 10. Delivery 2 weeks, DDP your site.","notes":["Bearings are priced per box of 10, so 38.00 is 3.80 a bearing.","Complete, delivered to your site in 2 weeks.","Prices in USD."],"total":2797.8,"line_totals":[1460.0,456.0,334.8,235.0,312.0]},{"key":"C","name":"Delta Parts Trading","kind":"photo","currency":"USD","fx":1,"vat_incl":true,"prices":[34.0,3.1,25.0,21.0,null],"delivery":"3 weeks","days":21,"fine":"Minimum order for bearings 500 pcs. Cylinder on request. Delivery 3 weeks.","noncompliant":"Bearing minimum order is 500 against 120 asked, and the cylinder is not quoted","notes":["Bearings carry a minimum order of 500 against your 120.","Cylinder not quoted.","3 weeks."],"total":2242.0,"line_totals":[1360.0,372.0,300.0,210.0,null]}],"answer":"B"},{"id":"clinic","title":"Clinic consumables, three sites","audience":"Clinic and hospitality groups","base":"AED","vat":0.05,"rfq":"RFQ-0096","must":["Quotation valid at award","Delivery to all three sites"],"lines":[{"item":"Examination gloves, box of 100, M","qty":300,"unit":"boxes"},{"item":"Alcohol hand rub 500 ml","qty":240,"unit":"bottles"},{"item":"Surgical masks type IIR, box of 50","qty":200,"unit":"boxes"},{"item":"Couch roll 50 cm × 40 m","qty":360,"unit":"rolls"},{"item":"Sharps container 5 L","qty":90,"unit":"pcs"}],"suppliers":[{"key":"A","name":"Medline Gulf Distribution","kind":"pdf","currency":"AED","fx":1,"vat_incl":false,"prices":[21.0,14.5,9.8,6.2,11.0],"delivery":"5 days, all sites","days":5,"fine":"Prices exclude VAT 5%. Delivery to three sites within 5 days. Validity 30 days.","notes":["Complete, three-site delivery.","Prices exclude VAT; 5% added.","5 days."],"total":15710.1,"line_totals":[6615.0,3654.0,2058.0,2343.6,1039.5]},{"key":"B","name":"CarePlus Medical Supplies","kind":"photo","currency":"AED","fx":1,"vat_incl":true,"per":[10,12,20,12,1],"prices":[214.0,168.0,185.0,69.0,11.9],"delivery":"7 days, all sites","days":7,"fine":"Gloves per case of 10 boxes, hand rub per case of 12, masks per case of 20 boxes, couch roll per case of 12. Incl. VAT. 7 days, all sites.","notes":["Everything is priced per case, so the big numbers hide low unit prices.","Prices include VAT.","7 days."],"total":14771.0,"line_totals":[6420.0,3360.0,1850.0,2070.0,1071.0]},{"key":"C","name":"Al Shifa Trading","kind":"email","currency":"AED","fx":1,"vat_incl":false,"prices":[19.9,13.8,9.2,5.9,10.5],"delivery":"10 days","days":10,"fine":"Prices exclude VAT. Quotation valid until 30/09, prices subject to confirmation. Delivery 10 days.","noncompliant":"Quotation has expired and prices are subject to confirmation","notes":["Lowest unit prices, but the validity date has passed.","Prices exclude VAT; 5% added.","10 days."],"total":14900.55,"line_totals":[6268.5,3477.6,1932.0,2230.2,992.25]}],"answer":"B"},{"id":"cleaning","title":"Cleaning contract, three sites","audience":"Facility managers and multi-site operators","base":"AED","vat":0.05,"rfq":"RFQ-S-012","must":["Six days a week at every site","Start within 15 days"],"lines":[{"item":"Daily cleaning, Site A, 1,200 m²","qty":12,"unit":"months"},{"item":"Daily cleaning, Site B, 800 m²","qty":12,"unit":"months"},{"item":"Daily cleaning, Site C, 600 m²","qty":12,"unit":"months"},{"item":"Consumables, all sites","qty":12,"unit":"months"},{"item":"Deep clean, all sites","qty":4,"unit":"visits"}],"suppliers":[{"key":"A","name":"Pearl Facility Services","kind":"pdf","currency":"AED","fx":1,"vat_incl":false,"prices":[6800,4900,3900,1450,2200],"delivery":"Start in 10 days","days":10,"fine":"Monthly rates per site, six days a week. Consumables charged monthly. Deep clean per visit. Prices exclude VAT. Start within 10 days.","notes":["Priced per month per site, six days a week.","Prices exclude VAT; 5% added.","Start in 10 days."],"total":224070.0,"line_totals":[85680.0,61740.0,49140.0,18270.0,9240.0]},{"key":"B","name":"CleanRight LLC","kind":"email","currency":"AED","fx":1,"vat_incl":true,"prices":[7540,5330,4290,0,1900],"delivery":"Start in 7 days","days":7,"doc_rows":[["Site A, per visit, 5 days a week (22 visits/month)","12 months","290 / visit",""],["Site B, per visit, 5 days a week","12 months","205 / visit",""],["Site C, per visit, 5 days a week","12 months","165 / visit",""],["Consumables","","included",""],["Deep clean","4 visits","1,900 / visit",""]],"fine":"Per-visit rates, Monday to Friday. Consumables included. Prices include VAT. Start within 7 days.","noncompliant":"Offers five days a week, not six","notes":["Per-visit rates, so the monthly cost has to be worked out: 26 visits a month at six days, 22 at five.","Quotes five days a week against your six.","Consumables included; prices include VAT."],"total":213520.0,"line_totals":[90480.0,63960.0,51480.0,0.0,7600.0]},{"key":"C","name":"Horizon Cleaning & Maintenance","kind":"photo","currency":"AED","fx":1,"vat_incl":false,"prices":[5520,3680,2760,1200,2400],"delivery":"Start in 14 days","days":14,"fixed":[{"label":"Supervision charge, per month × 12","amount":10800,"requested":false}],"doc_rows":[["Daily cleaning, 6 days, per m² per month","2,600 m²","4.60 / m²","11,960 / month"],["Consumables, all sites","12 months","1,200 / month",""],["Deep clean, all sites","4 visits","2,400 / visit",""],["Supervision charge","12 months","900 / month","10,800"]],"fine":"Rates per square metre per month, six days a week. Supervision charged separately. Prices exclude VAT. Mobilisation 14 days.","notes":["Priced per square metre per month; 4.60 × 2,600 m² is 11,960 a month across the three sites.","Adds a supervision charge nobody asked for; set aside from the comparison and flagged for you to accept or refuse.","Prices exclude VAT; 5% added. Start in 14 days."],"total":175896.0,"line_totals":[69552.0,46368.0,34776.0,15120.0,10080.0]}],"answer":"C"},{"id":"hvac","title":"Air-conditioning maintenance, 48 units","audience":"Facility managers and clinic groups","base":"USD","vat":0.0,"rfq":"RFQ-S-027","must":["Valid HVAC contractor licence","Quarterly visits (four a year)","Emergency call-out within 24 hours"],"lines":[{"item":"Preventive maintenance visit, all 48 units","qty":4,"unit":"visits"},{"item":"Filter replacement","qty":192,"unit":"filters"},{"item":"Refrigerant top-up allowance","qty":10,"unit":"kg"},{"item":"Emergency call-outs included","qty":6,"unit":"call-outs"},{"item":"Annual duct cleaning","qty":48,"unit":"units"}],"suppliers":[{"key":"A","name":"Coolline Technical Services","kind":"pdf","currency":"USD","fx":1,"vat_incl":true,"prices":[1650,9.5,28,120,35],"delivery":"Licence no. HV-2291, 24-hour call-out","days":1,"fine":"Licensed HVAC contractor, licence HV-2291 attached. Four quarterly visits. Emergency response within 24 hours. Prices in USD.","notes":["Licence attached, quarterly visits, 24-hour call-out: all three must-meets.","Not the lowest price.","The only quote that can be awarded as it stands."],"total":11104.0,"line_totals":[6600.0,1824.0,280.0,720.0,1680.0]},{"key":"B","name":"QuickFix AC Services","kind":"photo","currency":"USD","fx":1,"vat_incl":true,"prices":[1100,8.0,22,95,30],"delivery":"Licence: applied for","days":1,"fixed":[{"label":"Annual service charge","amount":850,"requested":false}],"fine":"Contractor licence applied for. Annual service charge applies. Same-day call-out. Prices in USD.","noncompliant":"No valid contractor licence, which was a must-meet","notes":["Cheapest by far, and cannot be awarded: the licence is \"applied for\", not held.","Adds an annual service charge that was not requested.","Same-day call-out."],"total":8166.0,"line_totals":[4400.0,1536.0,220.0,570.0,1440.0]},{"key":"C","name":"Gulf Climate Care","kind":"email","currency":"USD","fx":1,"vat_incl":true,"prices":[1400,9.0,26,110,33],"delivery":"Two visits a year, 48-hour call-out","days":2,"doc_rows":[["Preventive maintenance, 48 units","2 visits / year","1,400 / visit",""],["Filters","192","9.00",""],["Refrigerant","10 kg","26 / kg",""],["Call-outs, within 48 hours","6","110",""],["Duct cleaning","48","33",""]],"fine":"Two maintenance visits a year. Call-out within 48 hours. Licensed. Prices in USD.","noncompliant":"Offers two visits a year, not quarterly, and 48-hour call-out","notes":["Offers two visits a year against the four you asked for.","Call-out in 48 hours against the 24 required.","Licensed, and priced between the other two."],"total":9832.0,"line_totals":[5600.0,1728.0,260.0,660.0,1584.0]}],"answer":"A"},{"id":"electrical","title":"Electrical materials, fit-out","audience":"Contractors and traders, Gulf","base":"AED","vat":0.05,"rfq":"RFQ-0788","must":["MCB rated 32 A","Delivery within 10 days"],"lines":[{"item":"Cable 2.5 mm² 3-core, 100 m drum","qty":40,"unit":"drums"},{"item":"MCB 32 A, single pole","qty":120,"unit":"pcs"},{"item":"13 A switched socket, double","qty":200,"unit":"pcs"},{"item":"LED panel 600 × 600, 40 W","qty":80,"unit":"pcs"},{"item":"PVC conduit 25 mm, 3 m","qty":300,"unit":"lengths"}],"suppliers":[{"key":"A","name":"مؤسسة النور للكهرباء","name_en":"Al Noor Electrical Est.","lang":"ar","kind":"pdf","currency":"AED","fx":1,"vat_incl":false,"prices":[180.0,14.5,17.5,62.0,6.2],"delivery":"5 days","days":5,"doc_lines":["كابل 2.5 مم² ثلاثي الأسلاك، بكرة 100 م","قاطع تيار MCB 32 أمبير أحادي القطب","مقبس 13 أمبير مزدوج مع مفتاح","لوحة إضاءة LED 60×60 سم 40 واط","أنبوب PVC قطر 25 مم، طول 3 م"],"doc_head":["الوصف","الكمية","سعر الوحدة","المبلغ"],"doc_total":"الإجمالي (درهم)","fine":"الأسعار لا تشمل ضريبة القيمة المضافة 5٪. التسليم خلال 5 أيام. العرض ساري 14 يوماً.","fine_en":"Prices exclude VAT 5%. Delivery within 5 days. Valid 14 days.","notes":["Typed quotation in Arabic; read and matched line by line to your request.","Prices exclude VAT; 5% added.","5 days. The right award, and the one most visitors cannot read."],"total":20223.0,"line_totals":[7560.0,1827.0,3675.0,5208.0,1953.0]},{"key":"B","name":"فیصل الیکٹرک ٹریڈنگ","name_en":"Faisal Electric Trading","lang":"ur","kind":"photo","currency":"AED","fx":1,"vat_incl":true,"prices":[198.0,15.2,17.5,66.0,6.0],"delivery":"7 days","days":7,"doc_lines":["تار 2.5 ملی میٹر تین کور، 100 میٹر ڈرم","MCB 32 ایمپیئر سنگل پول","13 ایمپیئر ڈبل ساکٹ سوئچ کے ساتھ","LED پینل 60×60 سینٹی میٹر 40 واٹ","PVC پائپ 25 ملی میٹر، 3 میٹر"],"doc_head":["تفصیل","تعداد","ریٹ","رقم"],"doc_total":"کل رقم (درہم)","fine":"قیمتیں ویٹ سمیت ہیں۔ ڈیلیوری 7 دن۔","fine_en":"Prices include VAT. Delivery 7 days.","notes":["Handwritten quotation in Urdu, photographed; read and matched to your lines.","Prices include VAT.","Complete and compliant, a little dearer than A."],"total":20324.0,"line_totals":[7920.0,1824.0,3500.0,5280.0,1800.0]},{"key":"C","name":"Emirates Power Supplies","kind":"email","currency":"AED","fx":1,"vat_incl":false,"prices":[176.0,13.9,16.8,59.0,5.9],"delivery":"6 days","days":6,"fine":"Prices exclude VAT. MCBs offered are 25 A single pole. Delivery 6 days.","noncompliant":"MCB offered is 25 A, not the 32 A required","notes":["Lowest prices and in English, which is why most people pick it.","MCB offered is 25 A against the 32 A you specified, a must-meet.","Prices exclude VAT; 5% added."],"total":19485.9,"line_totals":[7392.0,1751.4,3528.0,4956.0,1858.5]}],"answer":"A"}]</script>
+<script>
+(function(){
+  var S=JSON.parse(document.getElementById('data').textContent);
+  var cur=null, idx=0, left=60, tick=null, answered=false, results={};
+  try{results=JSON.parse(localStorage.getItem('wya-results')||'{}')||{};}catch(e){results={};}
+  function save(){try{localStorage.setItem('wya-results',JSON.stringify(results));}catch(e){}}
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function fmt(x){return x.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,",");}
+  function fmt0(x){return Math.round(x).toString().replace(/\B(?=(\d{3})+(?!\d))/g,",");}
+  function money(x,cur){return cur+' '+fmt(x);}
+  function sname(x){return x.name_en||x.name;}
+  var sec={brief:document.getElementById('brief'),play:document.getElementById('play'),reveal:document.getElementById('reveal')};
+  function show(k){for(var s in sec) sec[s].hidden=(s!==k); window.scrollTo({top:0});}
+  var kindLabel={pdf:'PDF attachment',photo:'Photo of a printed quote',email:'Email reply, no attachment'};
+  var langName={ar:'Arabic',ur:'Urdu'};
+
+  var openBrief; function openBrief0(i){
+    idx=i; cur=S[i];
+    document.getElementById('brief-eyebrow').textContent='Challenge '+(i+1)+' of '+S.length+' · '+cur.audience;
+    document.getElementById('brief-title').textContent=cur.title;
+    var h='<div class="eyebrow">Your request · '+esc(cur.rfq)+' · base currency '+esc(cur.base)+(cur.vat?' · VAT '+Math.round(cur.vat*100)+'%':' · no VAT')+'</div><table><thead><tr><th>Line</th><th>Item</th><th class="n">Qty</th></tr></thead><tbody>';
+    cur.lines.forEach(function(L,k){h+='<tr><td>'+(k+1)+'</td><td>'+esc(L.item)+'</td><td class="n">'+fmt0(L.qty)+' '+esc(L.unit)+'</td></tr>';});
+    document.getElementById('request').innerHTML=h+'</tbody></table>';
+    document.getElementById('must').innerHTML='<span class="eyebrow">Must-meets</span><ul>'+cur.must.map(function(m){return '<li>'+esc(m)+'</li>';}).join('')+'</ul>';
+    renderOthers(); show('brief');
+  }
+  function renderOthers(){
+    var o=document.getElementById('others'); o.innerHTML='';
+    S.forEach(function(s,i){var b=document.createElement('button'); if(i===idx) b.className='cur'; var r=results[s.id];
+      b.innerHTML='<span><span class="t">'+(i+1)+'. '+esc(s.title)+'</span><br><span class="m">'+esc(s.audience)+'</span></span>'+(r?'<span class="ok">'+(r==='right'?'Right':'Played')+'</span>':'<span class="m">'+esc(s.base)+'</span>');
+      b.addEventListener('click',function(){openBrief(i);}); o.appendChild(b);});
+    var played=Object.keys(results).length, right=Object.keys(results).filter(function(k){return results[k]==='right';}).length;
+    document.getElementById('tally').textContent=played?('Your score so far: '+right+' of '+played+'.'):'';
+  }
+  document.getElementById('home').addEventListener('click',function(){openBrief(idx);});
+  document.getElementById('nextbtn').addEventListener('click',function(){openBrief((idx+1)%S.length);});
+
+  function docHtml(sup,s){
+    var per=sup.per||s.lines.map(function(){return 1;}), rtl=!!sup.lang, cls=rtl?' lang-'+sup.lang:'', dir=rtl?' dir="rtl"':'';
+    if(sup.kind==='email'){
+      var body;
+      if(sup.doc_rows){ body='Dear Sir or Madam,\n\nThank you for your request '+s.rfq+'. Our offer:\n\n'+sup.doc_rows.map(function(r){return r[0]+(r[1]?' · '+r[1]:'')+' · '+r[2];}).join('\n')+'\n\n'+sup.fine; }
+      else { body='Dear Sir or Madam,\n\nThank you for your request '+s.rfq+'. Our best rates are below, per unit'+(sup.vat_incl?', including VAT':', excluding VAT')+(sup.currency!==s.base?', in '+sup.currency:'')+':\n\n';
+        s.lines.forEach(function(L,i){var p=sup.prices[i]; body+=L.item+' '+'.'.repeat(Math.max(3,44-L.item.length))+' '+(p===null?'not available':(sup.currency+' '+fmt(p)+(per[i]>1?' per '+per[i]:'')))+'\n';});
+        body+='\n'+sup.fine; }
+      body=esc(body)+'\n\n<span class="sig">Best regards,\n'+esc(sup.name)+'</span>';
+      return '<div class="email"><div class="hdr"><span>From</span><b>sales@'+esc(sname(sup).toLowerCase().replace(/[^a-z]+/g,'-').replace(/^-|-$/g,''))+'.example</b><span>Subject</span><b>RE: '+esc(s.rfq)+' '+esc(s.title.toLowerCase())+'</b></div><div class="bodytxt">'+body+'</div></div>';
+    }
+    var head=sup.doc_head||['Description','Qty','Unit','Amount'], rows='', printed=0;
+    if(sup.doc_rows){ sup.doc_rows.forEach(function(r){rows+='<tr><td>'+esc(r[0])+'</td><td class="n">'+esc(r[1])+'</td><td class="n">'+esc(r[2])+'</td><td class="n">'+esc(r[3])+'</td></tr>';}); }
+    else {
+      s.lines.forEach(function(L,i){var p=sup.prices[i]; var amt=(p===null)?null:p/per[i]*L.qty; if(amt!==null) printed+=amt; var nm=sup.doc_lines?sup.doc_lines[i]:L.item;
+        rows+='<tr><td>'+esc(nm)+(per[i]>1?' <em>(per '+per[i]+')</em>':'')+'</td><td class="n">'+fmt0(L.qty)+'</td><td class="n">'+(p===null?'N/A':fmt(p))+'</td><td class="n">'+(amt===null?'—':fmt(amt))+'</td></tr>';});
+      (sup.fixed||[]).forEach(function(f){rows+='<tr><td colspan="3">'+esc(f.label)+'</td><td class="n">'+fmt(f.amount)+'</td></tr>'; printed+=f.amount;});
+    }
+    var totRow='';
+    if(!sup.doc_rows){ var tot=(sup.printed_total!==undefined)?sup.printed_total:printed; totRow='<tr class="tot"><td colspan="3">'+esc(sup.doc_total||((sup.vat_incl?'Total incl. VAT':'Total')+' ('+sup.currency+')'))+'</td><td class="n">'+fmt(tot)+'</td></tr>'; }
+    var table='<table'+dir+'><thead><tr><th style="text-align:'+(rtl?'right':'left')+'">'+esc(head[0])+'</th><th class="n">'+esc(head[1])+'</th><th class="n">'+esc(head[2])+'</th><th class="n">'+esc(head[3])+'</th></tr></thead><tbody>'+rows+totRow+'</tbody></table>';
+    if(sup.kind==='pdf'){
+      return '<div class="paper'+cls+'"'+dir+'><div class="lh"><div class="co">'+esc(sup.name)+'</div><span class="pdfmark">PDF · 1 page</span></div><div style="color:var(--muted);font-size:12px;margin-bottom:10px">'+(rtl?'عرض سعر · ':'Quotation · Ref ')+esc(s.rfq)+'</div>'+table+'<div class="fine">'+esc(sup.fine)+'</div></div>';
+    }
+    return '<div class="photo"><div class="glare"></div><div class="sheet'+cls+'"'+dir+'><div style="font-weight:700;font-size:15px">'+esc(rtl?sup.name:sup.name.toUpperCase())+'</div><div style="font-size:12px;margin-bottom:10px">'+(rtl?'نمبر ':'Quotation No. ')+(7000+((s.id.length*131+sup.key.charCodeAt(0))%900))+' · '+esc(s.rfq)+'</div>'+table+'<div class="fine">'+esc(sup.fine)+'</div></div><div class="stamp">APPROVED</div></div>';
+  }
+
+  document.getElementById('start').addEventListener('click',function(){
+    var d=document.getElementById('docs'); d.innerHTML='';
+    cur.suppliers.forEach(function(sup){var w=document.createElement('div'); w.className='doc'; w.innerHTML='<div class="kind">Supplier '+sup.key+' · '+kindLabel[sup.kind]+(sup.lang?' · in '+langName[sup.lang]:'')+'</div>'+docHtml(sup,cur); d.appendChild(w);});
+    document.getElementById('goal').textContent='Award the supplier that meets every must-meet and is cheapest for the whole request, in '+cur.base+(cur.vat?' including VAT.':'.');
+    answered=false; left=60; var t=document.getElementById('timer'); t.textContent=left; t.classList.remove('low');
+    clearInterval(tick); tick=setInterval(function(){left--; t.textContent=left; if(left<=10) t.classList.add('low'); if(left<=0){clearInterval(tick); finish(null);}},1000);
+    show('play');
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('button.pick[data-pick]'),function(btn){btn.addEventListener('click',function(){finish(btn.getAttribute('data-pick'));});});
+
+  function finish(pick){
+    if(answered) return; answered=true; clearInterval(tick);
+    var s=cur, ans=s.answer, win=s.suppliers.filter(function(x){return x.key===ans;})[0];
+    var v=document.getElementById('verdict'), sub=document.getElementById('verdict-sub');
+    var winTxt='Bidalize recommends Supplier '+ans+', '+sname(win)+': meets every must-meet, cheapest complete quote at '+money(win.total,s.base)+(s.vat?' including VAT.':'.');
+    if(pick===ans){v.textContent='You would award '+ans+'. So would Bidalize.'; sub.textContent=winTxt+' Below is how it got there, and what it recorded.';}
+    else if(pick){var p=s.suppliers.filter(function(x){return x.key===pick;})[0]; v.textContent='You would award '+pick+'. Bidalize would not.'; sub.textContent=(p.noncompliant?('Supplier '+pick+' fails a must-meet: '+p.noncompliant+'. '):('Supplier '+pick+' meets the must-meets but, normalised to '+s.base+(s.vat?' including VAT':'')+', comes to '+money(p.total,s.base)+'. '))+winTxt;}
+    else {v.textContent='Time is up. '+winTxt; sub.textContent='Sixty seconds is about what three quotes get before the lowest printed number wins. Here is the same minute, spent by Bidalize.';}
+    results[s.id]=(pick===ans)?'right':'wrong'; save();
+    show('reveal'); runMinute();
+  }
+
+  function flag(c,t){return '<span class="flag '+c+'">'+esc(t)+'</span>';}
+  function minuteEvents(s){
+    var ev=[[0,'Three replies arrive by email.']], t=6;
+    s.suppliers.forEach(function(x){
+      var bits=[], n=x.line_totals.filter(function(v){return v!==null;}).length;
+      bits.push(kindLabel[x.kind].toLowerCase()+(x.lang?' in '+langName[x.lang]+', translated':'')+': '+n+' of '+s.lines.length+' lines');
+      if(n<s.lines.length) bits.push('a line not quoted');
+      if(x.currency!==s.base) bits.push('prices in '+x.currency);
+      if(x.per&&x.per.some(function(p){return p>1;})) bits.push('some prices per pack or case');
+      if(x.doc_rows&&!x.lang) bits.push('rates on a different basis from the request');
+      if(x.printed_total!==undefined){var sum=x.line_totals.reduce(function(a,b){return a+(b||0);},0); if(Math.abs(sum-x.printed_total)>0.5) bits.push('printed total does not match the lines');}
+      (x.fixed||[]).forEach(function(f){bits.push(f.requested?'extra line: '+f.label.toLowerCase():'a line nobody asked for: '+f.label.toLowerCase());});
+      (x.pct||[]).forEach(function(c){bits.push(c.label.toLowerCase()+' '+Math.round(c.rate*100)+'% in the small print');});
+      ev.push([t,'Read Supplier '+x.key+' ('+bits.join('; ')+').']); t+=11;
+    });
+    ev.push([t,'Normalise to '+s.base+(s.vat?' including VAT':'')+': currencies, units, packs and quantities from your request.']); t+=7;
+    var fails=s.suppliers.filter(function(x){return x.noncompliant;});
+    ev.push([t,'Check must-meets: '+(fails.length?fails.map(function(x){return 'Supplier '+x.key+' excluded ('+x.noncompliant+')';}).join('; ')+'.':'all three pass.')]); t+=6;
+    ev.push([t,'Score price, delivery and coverage. Recommend Supplier '+s.answer+'.']); t+=5;
+    ev.push([Math.min(t,58),'Save the comparison, the reasons and the approval request to the record.']);
+    return ev;
+  }
+  function runMinute(){
+    var s=cur, tl=document.getElementById('tl'), clock=document.getElementById('clock'), ev=minuteEvents(s);
+    tl.innerHTML=ev.map(function(e,i){return '<li'+(i===ev.length-1?' class="last"':'')+'><span class="t">0:'+(e[0]<10?'0':'')+e[0]+'</span><span class="x">'+esc(e[1])+'</span></li>';}).join('');
+    buildTable(); document.getElementById('awards').innerHTML=''; document.getElementById('cmpbody').style.visibility='hidden';
+    var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches, speed=reduce?0:180; // one replay second = 180 ms
+    var items=tl.querySelectorAll('li'), sec=0, last=ev[ev.length-1][0];
+    clock.textContent='0:00';
+    var h=setInterval(function(){ sec++; clock.textContent='0:'+(sec<10?'0':'')+sec; ev.forEach(function(e,i){if(e[0]===sec) items[i].classList.add('on');}); if(sec>=last){clearInterval(h); items[items.length-1].classList.add('on'); document.getElementById('cmpbody').style.visibility='visible'; document.getElementById('pstatus').textContent='Comparison complete.'; buildAwards();} }, speed||1);
+    if(reduce){ Array.prototype.forEach.call(items,function(li){li.classList.add('on');}); }
+    document.getElementById('pstatus').textContent='Filling in as the minute runs…';
+  }
+  function buildTable(){
+    var s=cur, head=document.getElementById('cmphead'), body=document.getElementById('cmpbody');
+    document.getElementById('ptitle').textContent='Bidalize · comparison for '+s.rfq;
+    head.innerHTML='<tr><th>Line</th>'+s.suppliers.map(function(x){return '<th class="n">'+x.key+' · '+esc(sname(x).split(' ').slice(0,2).join(' '))+'</th>';}).join('')+'</tr>';
+    var rows=[];
+    s.lines.forEach(function(L,i){
+      var vals=s.suppliers.map(function(x){return x.line_totals[i];}), ok=vals.filter(function(v){return v!==null;}), best=Math.min.apply(null,ok);
+      rows.push('<tr><td>'+esc(L.item.split(',')[0])+', '+fmt0(L.qty)+' '+esc(L.unit)+'</td>'+s.suppliers.map(function(x,j){var v=vals[j]; if(v===null) return '<td class="n">not quoted'+flag('b','missing')+'</td>'; if(v===0) return '<td class="n">0.00'+flag('g','included')+'</td>'; var per=(x.per||[])[i]||1, f=''; if(i===0&&x.currency!==s.base) f+=flag('w',x.currency+' → '+s.base); if(i===0&&x.lang) f+=flag('w','read from '+langName[x.lang]); if(per>1) f+=flag('w','priced per '+per); return '<td class="n'+(v===best?' best':'')+'">'+fmt(v)+f+'</td>';}).join('')+'</tr>');
+    });
+    var extras=s.suppliers.some(function(x){return (x.fixed||[]).some(function(f){return !f.requested;});});
+    if(extras) rows.push('<tr class="extra"><td>Not in your request</td>'+s.suppliers.map(function(x){var e=(x.fixed||[]).filter(function(f){return !f.requested;}); return '<td class="n">'+(e.length?e.map(function(f){return esc(f.label)+' '+fmt(f.amount)+flag('w','set aside');}).join('<br>'):'—')+'</td>';}).join('')+'</tr>');
+    rows.push('<tr class="total"><td>Comparable total, '+esc(s.base)+(s.vat?' incl. VAT':'')+'</td>'+s.suppliers.map(function(x){var f=''; if(x.key===s.answer) f+=flag('g','recommended'); if(x.noncompliant) f+=flag('b','must-meet failed'); if(x.printed_total!==undefined){var sum=x.line_totals.reduce(function(a,b){return a+(b||0);},0); if(Math.abs(sum-x.printed_total)>0.5) f+=flag('w','document says '+fmt(x.printed_total));} (x.fixed||[]).forEach(function(c){if(c.requested) f+=flag('w',c.label);}); (x.pct||[]).forEach(function(c){f+=flag('w',c.label+' +'+Math.round(c.rate*100)+'%');}); if(!x.vat_incl&&s.vat) f+=flag('w','VAT added'); return '<td class="n'+(x.key===s.answer?' best':'')+'">'+fmt(x.total)+'<br>'+f+'</td>';}).join('')+'</tr>');
+    body.innerHTML=rows.join('');
+    document.getElementById('notes').innerHTML=s.suppliers.map(function(x){return '<div class="note"><h3>Supplier '+x.key+' · '+esc(sname(x))+'</h3><ul>'+x.notes.map(function(n){return '<li>'+esc(n)+'</li>';}).join('')+'</ul></div>';}).join('');
+  }
+  function buildAwards(){
+    var s=cur, elig=s.suppliers.filter(function(x){return !x.noncompliant&&x.line_totals.every(function(v){return v!==null;});}).sort(function(a,b){return a.total-b.total;});
+    document.getElementById('awards').innerHTML=s.suppliers.map(function(x){
+      var rank=elig.indexOf(x), cover=x.line_totals.filter(function(v){return v!==null;}).length, cls=x.key===s.answer?' win':(x.noncompliant?' out':'');
+      var badge=x.key===s.answer?'<span class="badge g">Recommended award</span>':(x.noncompliant?'<span class="badge b">Excluded: must-meet failed</span>':'<span class="badge n">Eligible, not cheapest</span>');
+      return '<div class="award'+cls+'">'+badge+'<div class="eyebrow">Supplier '+x.key+' · '+esc(sname(x))+'</div><div class="big">'+fmt(x.total)+'</div><dl><dt>Price</dt><dd>'+(rank>=0?['1st','2nd','3rd'][rank]+' of eligible':'not ranked')+'</dd><dt>Coverage</dt><dd>'+cover+' of '+s.lines.length+' lines</dd><dt>Delivery</dt><dd>'+esc(x.delivery)+'</dd><dt>Must-meets</dt><dd>'+(x.noncompliant?esc(x.noncompliant):'All met')+'</dd></dl></div>';}).join('');
+  }
+  function byId(id){for(var i=0;i<S.length;i++) if(S[i].id===id) return i; return -1;}
+  var q=(location.search.match(/[?&]c=([a-z]+)/)||[])[1], start=byId(q||''); if(start<0) start=0;
+  openBrief=function(i){openBrief0(i); try{history.replaceState(null,'','?c='+S[i].id);}catch(e){}};
+  openBrief(start);
+})();
+</script>
+<footer class="site">
+  <div class="wrap">
+    <div>© 2026 Bidalize · Vorapure UK Ltd · Company No. 17138078</div>
+    <div class="footlinks"><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/agreement">Customer Agreement</a><a href="/cookies">Cookies</a><a href="/acceptable-use">Acceptable Use</a><a href="mailto:hello@bidalize.com">hello@bidalize.com</a></div>
+  </div>
+</footer>
+</body>
+</html>
