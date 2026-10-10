@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://www.bidalize.com/roi">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Bidalize">
+<meta property="og:url" content="https://www.bidalize.com/roi">
+<meta property="og:title" content="What would Bidalize save your team? ROI calculator">
+<meta property="og:description" content="Enter your buyers, salaries and monthly requests. See the staff time saved, the plan that fits, and every assumption behind the numbers.">
+<meta property="og:image" content="https://www.bidalize.com/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>ROI calculator · Bidalize</title>
+<meta name="description" content="Enter your buyers, salaries and monthly requests. See the staff time saved, the plan that fits, and every assumption behind the numbers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap">
+<style>  :root{
+    --ink:#14171f; --ink-soft:#5a6072; --line:#e4e6ec; --paper:#ffffff;
+    --wash:#f6f7f9; --brand:#1b3a8c; --brand-soft:#eef2fb; --win:#127a53; --win-soft:#e7f4ee;
+    --amber:#b06a00; --amber-soft:#fbf3e4; --red:#a32d2d; --red-soft:#fcebeb;
+    --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    --mono:ui-monospace,'SF Mono',SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--ink);background:var(--paper);line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  nav{padding:18px 0;border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);z-index:20}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:20px}
+  .navlinks{display:flex;gap:24px;align-items:center;font-size:14px;color:var(--ink-soft)}
+  .navlinks a:hover{color:var(--ink)}
+  .btn{display:inline-block;background:var(--brand);color:#fff;padding:9px 18px;border-radius:8px;font-size:14px;font-weight:500;transition:.15s;border:1px solid var(--brand);cursor:pointer}
+  .btn:hover{background:#16306f}
+  .btn-ghost{background:transparent;color:var(--brand);border:1px solid var(--line)}
+  .btn-ghost:hover{background:var(--brand-soft)}
+  @media(max-width:860px){.navlinks .hide{display:none}}
+  footer{padding:32px 0;border-top:1px solid var(--line);font-size:13.5px;color:var(--ink-soft)}
+  footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+  .footlinks{display:flex;gap:22px;flex-wrap:wrap}
+  footer a:hover{color:var(--ink)}
+  @media(max-width:640px){.navlinks a:not(.btn):not(.hide),.footlinks a{display:inline-block;padding:6px 0}}
+</style>
+<style>
+[hidden]:not([hidden=until-found i]) { display: none !important; }
+/* Layout: inputs card left, navy result panel right (sticky on desktop); assumptions and sources below as quiet reading sections. */
+:root {
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --ink: #14171f;
+  --muted: #5a6072;
+  --line: #e4e6ec;
+  --accent: #1b3a8c;
+  --accent-soft: #eef2fb;
+  --c-eff: #1d9e75;
+  --c-comp: #6f86c9;
+  --c-price: #ef9f27;
+  --panel-bg: #122a6b;
+  --panel-ink: #ffffff;
+  --panel-muted: #c3cdea;
+  --panel-line: rgba(255,255,255,.16);
+  --panel-accent: #9fb2ea;
+  --warn: #b06a00;
+  --warn-bg: #fbf3e4;
+  --focus: #1b3a8c;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace;
+}
+.roi-page { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.55; padding: 56px 28px 88px; }
+.roi-page .wrap { padding: 0; }
+* { box-sizing: border-box; }
+.roi-page .wrap { max-width: 1080px; margin-inline: auto; display: flex; flex-direction: column; gap: 32px; }
+.roi-page h1, .roi-page h2, .roi-page h3, .roi-page p { margin: 0; }
+h1 { font-size: clamp(2.1rem, 4.6vw, 3rem); line-height: 1.08; font-weight: 600; letter-spacing: -0.032em; text-wrap: balance; max-width: 22ch; }
+h2 { font-size: 1.15rem; font-weight: 650; letter-spacing: -0.01em; text-wrap: balance; }
+.eyebrow { font-family: var(--font-body); font-size: 12.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+.lede { color: var(--muted); max-width: 62ch; margin-top: 10px; font-size: 18px; }
+.roi-page header { display: flex; flex-direction: column; gap: 8px; }
+
+.grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+@media (max-width: 820px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+
+.inputs { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+.group { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.group + .group { padding-top: 20px; border-top: 1px solid var(--line); }
+.group-title { font-family: var(--font-body); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.field { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.field label, .field .lbl { font-weight: 550; font-size: 0.95rem; }
+.hint { color: var(--muted); font-size: 0.82rem; }
+.row2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; }
+@media (max-width: 460px) { .row2 { grid-template-columns: minmax(0, 1fr); } }
+
+.num { display: flex; align-items: center; border: 1px solid var(--line); border-radius: 8px; background: #f6f7f9; min-width: 0; }
+.num:focus-within { outline: 2px solid var(--focus); outline-offset: 1px; }
+.num span { padding-inline: 12px 0; color: var(--muted); font-family: var(--font-mono); font-size: 0.9rem; }
+.num span.suffix { padding-inline: 0 12px; }
+.num input { flex: 1; min-width: 0; width: 100%; border: 0; background: transparent; color: var(--ink); font: 500 1.05rem var(--font-mono); padding: 11px 12px; outline: none; font-variant-numeric: tabular-nums; }
+.num span + input { padding-left: 6px; }
+
+.slider-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.slider-val { font-family: var(--font-mono); font-weight: 500; font-size: 1.05rem; color: var(--accent); font-variant-numeric: tabular-nums; }
+input[type=range] { width: 100%; accent-color: var(--accent); height: 28px; margin: 0; }
+input[type=range]:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 6px; }
+.src-tag { font-size: 0.8rem; color: var(--muted); }
+.src-tag a { color: var(--accent); }
+
+.result { background: var(--panel-bg); color: var(--panel-ink); border-radius: 14px; padding: 24px; display: flex; flex-direction: column; gap: 22px; min-width: 0; position: sticky; top: calc(env(safe-area-inset-top, 0px) + 16px); }
+@media (max-width: 820px) { .result { position: static; } }
+.result-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.result .eyebrow { color: var(--panel-accent); }
+.seg { display: inline-flex; border: 1px solid var(--panel-line); border-radius: 999px; padding: 3px; gap: 2px; }
+.seg button { font: 600 0.82rem var(--font-body); color: var(--panel-muted); background: transparent; border: 0; border-radius: 999px; padding: 6px 14px; cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--panel-ink); color: var(--panel-bg); }
+.seg button:focus-visible { outline: 2px solid var(--panel-accent); outline-offset: 2px; }
+.big { font-family: var(--font-mono); font-weight: 500; font-size: clamp(2.3rem, 7vw, 3.4rem); line-height: 1; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.big-label { color: var(--panel-muted); margin-top: 8px; font-size: 0.92rem; }
+
+.bar { display: flex; height: 10px; border-radius: 999px; overflow: hidden; background: var(--panel-line); gap: 2px; }
+.bar i { display: block; height: 100%; }
+.bar .e { background: var(--c-eff); }
+.bar .c { background: var(--c-comp); }
+.bar .p { background: var(--c-price); }
+.rows { display: flex; flex-direction: column; margin: 0; }
+.rows > div { display: grid; grid-template-columns: 12px minmax(0, 1fr) auto; column-gap: 12px; align-items: baseline; padding-block: 12px; border-top: 1px solid var(--panel-line); }
+.rows dt { font-weight: 550; }
+.rows dt small { display: block; color: var(--panel-muted); font-weight: 400; font-size: 0.82rem; margin-top: 2px; }
+.rows dd { margin: 0; font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-size: 1.02rem; }
+.dot { width: 10px; height: 10px; border-radius: 50%; align-self: center; }
+.dot.e { background: var(--c-eff); }
+.dot.c { background: var(--c-comp); }
+.dot.p { background: var(--c-price); }
+
+.facts { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; }
+@media (max-width: 460px) { .facts { grid-template-columns: minmax(0, 1fr); } }
+.fact { border: 1px solid var(--panel-line); border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.fact b { font-family: var(--font-mono); font-weight: 500; font-size: 1.15rem; font-variant-numeric: tabular-nums; }
+.fact span { color: var(--panel-muted); font-size: 0.82rem; }
+.roi { background: color-mix(in srgb, var(--panel-accent) 14%, transparent); border-radius: 10px; padding: 12px 14px; }
+.roi b { font-family: var(--font-mono); font-weight: 500; font-size: 1.15rem; }
+.roi span { display: block; color: var(--panel-muted); font-size: 0.82rem; margin-top: 2px; }
+.cautious { color: var(--panel-muted); font-size: 0.88rem; }
+.cautious b { font-family: var(--font-mono); font-weight: 500; color: var(--panel-ink); }
+.cap-note { background: var(--warn-bg); color: var(--warn); border-radius: 8px; padding: 10px 12px; font-size: 0.85rem; }
+.cta { align-self: flex-start; background: #fff; color: var(--ink); font-weight: 500; font-size: 14px; text-decoration: none; padding: 9px 18px; border-radius: 8px; }
+.cta:hover { background: #e9eefb; }
+.cta:focus-visible { outline: 2px solid var(--panel-accent); outline-offset: 3px; }
+
+.plan { display: flex; flex-direction: column; gap: 20px; }
+.plan-head { display: flex; flex-direction: column; gap: 6px; }
+.plan-head h2 { font-size: clamp(1.4rem, 3.4vw, 1.9rem); letter-spacing: -0.02em; }
+.plan-why { color: var(--muted); max-width: 64ch; }
+.plan-prices { display: flex; flex-direction: column; gap: 18px; }
+.plan-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 700px) { .plan-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.pstat { border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.pstat b { font-family: var(--font-mono); font-weight: 500; font-size: 1.2rem; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+.pstat span { color: var(--muted); font-size: 0.82rem; }
+.tbl { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+th, td { text-align: left; padding: 10px 12px; border-top: 1px solid var(--line); vertical-align: top; }
+th { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); border-top: 0; font-weight: 500; }
+td.n { font-family: var(--font-mono); font-variant-numeric: tabular-nums; white-space: nowrap; }
+tr.best td { background: var(--accent-soft); }
+tr.best td:first-child { font-weight: 650; }
+
+details.panel, section.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 22px 24px; }
+summary { cursor: pointer; font-weight: 650; font-size: 1.05rem; list-style: none; display: flex; justify-content: space-between; gap: 12px; align-items: center; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; font-family: var(--font-mono); color: var(--accent); font-size: 1.2rem; }
+details[open] summary::after { content: "\2212"; }
+summary:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; border-radius: 6px; }
+.assump { margin-top: 18px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 20px; }
+@media (max-width: 600px) { .assump { grid-template-columns: minmax(0, 1fr); } }
+.formula { grid-column: 1 / -1; font-family: var(--font-mono); font-size: 0.82rem; color: var(--muted); background: #f6f7f9; border-radius: 8px; padding: 12px 14px; overflow-x: auto; white-space: pre; }
+
+.sources { display: flex; flex-direction: column; gap: 18px; }
+.sources ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px; }
+.sources li { display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px; padding-top: 16px; border-top: 1px solid var(--line); }
+.sources li:first-child { border-top: 0; padding-top: 0; }
+.sources .who { font-weight: 650; }
+.sources .what { color: var(--ink); }
+.sources .note { color: var(--muted); font-size: 0.88rem; }
+.sources a { color: var(--accent); overflow-wrap: anywhere; }
+.honest { color: var(--muted); font-size: 0.9rem; max-width: 70ch; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="/"><img src="/bidalize-wordmark.png" alt="Bidalize" width="105" height="28" style="height:28px;width:auto;display:block" /></a>
+    <div class="navlinks">
+      <a href="/#sourcing" class="hide">Sourcing</a>
+      <a href="/#who" class="hide">Who it is for</a>
+      <a href="/#how" class="hide">How it works</a>
+      <a href="/#pricing" class="hide">Pricing</a>
+      <a href="/roi" class="hide">ROI calculator</a>
+      <a href="/challenge" class="hide">Challenge</a>
+      <a href="https://app.bidalize.com/login">Sign in</a>
+      <a href="https://app.bidalize.com/register?src=home-nav" class="btn">Start free</a>
+    </div>
+  </div>
+</nav>
+
+<div class="roi-page">
+<main class="wrap">
+  <header>
+    <span class="eyebrow">Bidalize Sourcing</span>
+    <h1>What would faster, cleaner sourcing save your team?</h1>
+    <p class="lede">Enter your team size and how many requests you run each month. Every number below can be changed, and every assumption is shown.</p>
+  </header>
+
+  <div class="grid">
+    <form class="inputs" id="f" autocomplete="off" onsubmit="return false">
+      <div class="group">
+        <div class="group-title">Your team</div>
+        <div class="row2">
+          <div class="field">
+            <label for="buyers">Buyers</label>
+            <div class="num"><input id="buyers" type="number" inputmode="numeric" min="0" step="1" value="5"></div>
+          </div>
+          <div class="field">
+            <label for="rfps">Requests your company runs per month</label>
+            <div class="num"><input id="rfps" type="number" inputmode="numeric" min="0" step="1" value="20"></div>
+          </div>
+        </div>
+        <div class="field">
+          <label for="salary">Monthly salary per buyer</label>
+          <div class="num"><span>USD</span><input id="salary" type="number" inputmode="decimal" min="0" step="50" value="1000"></div>
+          <span class="hint">Use total monthly cost to the company if you know it. A higher figure raises the saving.</span>
+        </div>
+      </div>
+
+      <div class="group">
+        <div class="group-title">Expected improvement</div>
+        <div class="field">
+          <div class="slider-head"><label for="eff">Buyer efficiency</label><span class="slider-val" id="effOut">50%</span></div>
+          <input id="eff" type="range" min="0" max="80" step="1" value="50">
+          <span class="src-tag">Less time per request on drafting, chasing, reading and comparing quotes. Top of the 30 to 50% range McKinsey reports for sourcing cycle time; see <a href="#sources">sources</a>.</span>
+        </div>
+        <div class="field">
+          <div class="slider-head"><label for="comp">Compliance and audit</label><span class="slider-val" id="compOut">30%</span></div>
+          <input id="comp" type="range" min="0" max="80" step="1" value="30">
+          <span class="src-tag">Less time on documentation, rework and audit preparation. Close to the 34% contract compliance gain Aberdeen Group reported; see <a href="#sources">sources</a>.</span>
+        </div>
+      </div>
+
+    </form>
+
+    <section class="result" aria-live="polite">
+      <div class="result-top">
+        <span class="eyebrow">Estimated saving</span>
+        <div class="seg" role="group" aria-label="Period">
+          <button type="button" id="pMonth" aria-pressed="false">Monthly</button>
+          <button type="button" id="pYear" aria-pressed="true">Yearly</button>
+        </div>
+      </div>
+      <div>
+        <div class="big" id="total">$0</div>
+        <div class="big-label" id="totalLabel">per year, in staff time</div>
+      </div>
+      <div class="bar" id="bar" aria-hidden="true"><i class="e" id="barE"></i><i class="c" id="barC"></i><i class="p" id="barP"></i></div>
+      <dl class="rows">
+        <div><span class="dot e"></span><dt>Efficiency<small id="effSub"></small></dt><dd id="effVal"></dd></div>
+        <div><span class="dot c"></span><dt>Compliance and audit<small id="compSub"></small></dt><dd id="compVal"></dd></div>
+        <div id="priceRow"><span class="dot p"></span><dt>Price savings<small id="priceSub"></small></dt><dd id="priceVal"></dd></div>
+      </dl>
+      <div class="facts">
+        <div class="fact"><b id="hrsSaved">0</b><span id="hrsLabel">hours saved per month</span></div>
+        <div class="fact"><b id="extraReq">0</b><span>more requests per month with the same team</span></div>
+      </div>
+      <p class="cautious" id="cautious"></p>
+      <p class="cap-note" id="capNote" hidden></p>
+      <a class="cta" href="https://app.bidalize.com/register?src=roi">Try Bidalize with your own quotes</a>
+    </section>
+  </div>
+
+  <section class="panel plan" id="plan" aria-live="polite">
+    <div class="plan-head">
+      <span class="eyebrow">Suggested plan</span>
+      <h2 id="planName">Team</h2>
+      <p class="plan-why" id="planWhy"></p>
+    </div>
+    <div id="planPrices" class="plan-prices">
+      <div class="plan-stats">
+        <div class="pstat"><b id="planCost">$0</b><span id="planCostLbl">plan cost per year</span></div>
+        <div class="pstat"><b id="planPer">$0</b><span>cost per request</span></div>
+        <div class="pstat"><b id="planNet">$0</b><span id="planNetLbl">net saving per year</span></div>
+        <div class="pstat"><b id="planRoi">0%</b><span>return on the plan cost</span></div>
+      </div>
+      <div class="tbl">
+        <table>
+          <thead><tr><th>Option</th><th>Requests covered</th><th>Cost per month</th></tr></thead>
+          <tbody id="planRows"></tbody>
+        </table>
+      </div>
+      <p class="honest">Prices are in USD and exclude tax. Every plan has unlimited logins. Every account starts with 5 requests free, no card and no time limit. If you need more requests than a plan includes in a month, add a block of 10 (USD 45, valid 12 months), or move up a plan. The cheapest way to cover your volume is highlighted. <a href="/#pricing" style="color:var(--accent)">See the plans</a>.</p>
+    </div>
+  </section>
+
+  <details class="panel" id="assumptions">
+    <summary>Assumptions behind the numbers</summary>
+    <div class="assump">
+      <div class="field">
+        <label for="hpr">Buyer hours per request today</label>
+        <div class="num"><input id="hpr" type="number" min="0" step="1" value="20"><span class="suffix">hrs</span></div>
+        <span class="hint">Drafting the request, chasing suppliers, reading quotes, building the comparison. This is a Bidalize default, not an analyst figure. Replace it with your own.</span>
+      </div>
+      <div class="field">
+        <label for="aud">Compliance and audit hours per request today</label>
+        <div class="num"><input id="aud" type="number" min="0" step="1" value="4"><span class="suffix">hrs</span></div>
+        <span class="hint">Filing records, justifying the choice, answering finance or audit. Also a Bidalize default.</span>
+      </div>
+      <div class="field">
+        <label for="hm">Working hours per buyer per month</label>
+        <div class="num"><input id="hm" type="number" min="1" step="1" value="160"><span class="suffix">hrs</span></div>
+        <span class="hint">Used to turn monthly salary into an hourly cost.</span>
+      </div>
+      <div class="field">
+        <label for="avgv">Average value of one request (optional)</label>
+        <div class="num"><span>USD</span><input id="avgv" type="number" min="0" step="100" placeholder="Leave blank to skip"></div>
+        <span class="hint">Only needed if you want a price savings line.</span>
+      </div>
+      <div class="field">
+        <label for="pimp">Price improvement from comparing quotes side by side</label>
+        <div class="num"><input id="pimp" type="number" min="0" max="50" step="0.5" value="2"><span class="suffix">%</span></div>
+        <span class="hint">Not sourced. Applied only when an average request value is entered. Keep it small.</span>
+      </div>
+      <pre class="formula">Hourly cost        = monthly salary / working hours per month
+Efficiency saving  = requests x hours per request x efficiency % x hourly cost
+Compliance saving  = requests x audit hours per request x compliance % x hourly cost
+Price saving       = requests x average value x price improvement %
+Yearly             = monthly x 12
+Hours are capped at your team's total working hours.</pre>
+    </div>
+  </details>
+
+  <section class="panel sources" id="sources">
+    <h2>Where the improvement figures come from</h2>
+    <ul>
+      <li>
+        <span class="who">The Hackett Group, Digital World Class procurement research (October 2021)</span>
+        <span class="what">Digital world-class procurement organizations run at 25% lower cost than typical peers. A separate Hackett release says full digital deployment can cut a typical procurement organization's cost by 45%.</span>
+        <span class="note">Supports the efficiency figure. <a href="https://www.businesswire.com/news/home/20211007005106/en">Business Wire release</a> · <a href="https://www.nasdaq.com/press-release/the-hackett-group:-digital-transformation-can-enable-typical-procurement">Nasdaq release</a></span>
+      </li>
+      <li>
+        <span class="who">McKinsey, procurement and AI research</span>
+        <span class="what">A 30 to 50% reduction in sourcing cycle time is the typical outcome when AI tools support supplier identification, request preparation and bid analysis. Up to 70% in advanced deployments.</span>
+        <span class="note">Taken from a third-party summary, not from McKinsey's own report. <a href="https://stealthagents.com/research/ai-procurement-automation-statistics-2026">Summary page</a></span>
+      </li>
+      <li>
+        <span class="who">Aberdeen Group, e-procurement and spend analysis benchmarks</span>
+        <span class="what">Companies reported a 41% reduction in maverick spend and a 48% lower requisition-to-order cost after adopting e-procurement. Its spend analysis study reported a 34% average increase in contract compliance.</span>
+        <span class="note">Supports the compliance figure. These are older studies, so treat them as a direction, not a forecast. <a href="https://www.industryweek.com/leadership/companies-executives/article/21934233/e-procurement-provides-significant-cost-savings">IndustryWeek report</a></span>
+      </li>
+    </ul>
+    <p class="honest">These studies measure procurement automation in general, not Bidalize. The 50% efficiency default sits at the top of the cited range. Move the slider down for a cautious estimate. Hours per request are Bidalize assumptions, not analyst figures.</p>
+  </section>
+</main>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 Bidalize · Vorapure UK Ltd · Company No. 17138078</div>
+    <div class="footlinks"><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/agreement">Customer Agreement</a><a href="/cookies">Cookies</a><a href="/acceptable-use">Acceptable Use</a><a href="mailto:hello@bidalize.com">hello@bidalize.com</a></div>
+  </div>
+</footer>
+
+<script>
+// CALC-START
+function calc(i) {
+  var n = function (v) { v = parseFloat(v); return isFinite(v) && v > 0 ? v : 0; };
+  var buyers = n(i.buyers), salary = n(i.salary), rfps = n(i.rfps);
+  var eff = Math.min(n(i.eff), 100) / 100, comp = Math.min(n(i.comp), 100) / 100;
+  var hpr = n(i.hpr), aud = n(i.aud), hm = n(i.hm) || 160;
+  var avgv = n(i.avgv), pimp = Math.min(n(i.pimp), 100) / 100, cost = n(i.cost);
+  var hourly = salary / hm;
+  var workload = rfps * (hpr + aud);
+  var capacity = buyers * hm;
+  var scale = workload > capacity && workload > 0 ? capacity / workload : 1;
+  var effHrs = rfps * hpr * scale * eff;
+  var compHrs = rfps * aud * scale * comp;
+  var effVal = effHrs * hourly;
+  var compVal = compHrs * hourly;
+  var priceVal = rfps * avgv * pimp;
+  var total = effVal + compVal + priceVal;
+  var perReq = hpr + aud;
+  var extra = perReq > 0 ? (effHrs + compHrs) / perReq : 0;
+  return { hourly: hourly, workload: workload, capacity: capacity, capped: scale < 1,
+    effHrs: effHrs, compHrs: compHrs, effVal: effVal, compVal: compVal, priceVal: priceVal,
+    total: total, extra: extra, cost: cost, hrs: effHrs + compHrs };
+}
+// CALC-END
+
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var ids = ['buyers','salary','rfps','eff','comp','hpr','aud','hm','avgv','pimp'];
+  var period = 'year';
+  var usd = function (v) { return '$' + Math.round(v).toLocaleString('en-US'); };
+  var num = function (v, d) { return v.toLocaleString('en-US', { maximumFractionDigits: d == null ? 0 : d }); };
+
+  function read() { var o = {}; ids.forEach(function (k) { o[k] = $(k).value; }); return o; }
+
+  // PLAN-START
+  // Suggested prices and allowances. Edit here to change what the page recommends.
+  // Set SHOW_PRICES to false to recommend by plan name only (no costs, no ROI).
+  var SHOW_PRICES = true;
+  var PLANS = [
+    { id: 'starter', name: 'Starter', inc: 10, price: 39 },
+    { id: 'team', name: 'Team', inc: 30, price: 79 },
+    { id: 'business', name: 'Business', inc: 125, price: 179 }
+  ];
+  var BLOCK = { inc: 10, price: 45 };
+  var SELF_SERVE_MAX = 200;
+
+  function options(v) {
+    return PLANS.map(function (p) {
+      var blocks = Math.ceil(Math.max(0, v - p.inc) / BLOCK.inc);
+      return { plan: p, blocks: blocks, covers: p.inc + blocks * BLOCK.inc, cost: p.price + blocks * BLOCK.price };
+    });
+  }
+  function pick(v) {
+    var all = options(v), best = all[0];
+    all.forEach(function (x) {
+      if (x.cost < best.cost || (x.cost === best.cost && x.plan.inc > best.plan.inc)) best = x;
+    });
+    return { all: all, best: best };
+  }
+  // PLAN-END
+
+  function optLabel(x) {
+    return x.plan.name + (x.blocks ? ' + ' + x.blocks + (x.blocks === 1 ? ' block' : ' blocks') + ' of ' + BLOCK.inc : '');
+  }
+
+  function renderPlan(r, m, per) {
+    var v = Math.round(parseFloat($('rfps').value));
+    if (!isFinite(v) || v < 0) v = 0;
+    var prices = $('planPrices');
+    if (v === 0) {
+      $('planName').textContent = 'Enter your monthly requests';
+      $('planWhy').textContent = 'Add the number of requests your company runs each month to see which plan fits.';
+      prices.hidden = true;
+      return;
+    }
+    if (v > SELF_SERVE_MAX) {
+      $('planName').textContent = 'Email us';
+      $('planWhy').innerHTML = 'At ' + num(v) + ' requests a month you are above the self-serve plans. <a href="mailto:hello@bidalize.com?subject=Bidalize%20volume" style="color:var(--accent)">Email hello@bidalize.com</a> and we will set up a plan around your volume.';
+      prices.hidden = true;
+      return;
+    }
+    var res = pick(v), b = res.best, p = b.plan;
+    var every = ' a month';
+    $('planName').textContent = optLabel(b);
+    if (!b.blocks) {
+      $('planWhy').textContent = p.name + ' includes ' + p.inc + ' requests' + every + ', which covers your ' + num(v) + '. Every plan has unlimited logins.';
+    } else {
+      $('planWhy').textContent = p.name + ' includes ' + p.inc + ' requests' + every + '. ' + b.blocks + (b.blocks === 1 ? ' block' : ' blocks') + ' of ' + BLOCK.inc + ' cover the other ' + num(v - p.inc) + '. This is the lowest-cost way to cover ' + num(v) + ' requests a month. Every plan has unlimited logins.';
+    }
+    prices.hidden = !SHOW_PRICES;
+    if (!SHOW_PRICES) return;
+    var net = r.total - b.cost;
+    $('planCost').textContent = usd(b.cost * m);
+    $('planCostLbl').textContent = 'plan cost ' + per;
+    $('planPer').textContent = '$' + (b.cost / v).toFixed(2);
+    $('planNet').textContent = (net < 0 ? '-' : '') + usd(Math.abs(net) * m);
+    $('planNetLbl').textContent = 'net saving ' + per;
+    $('planRoi').textContent = b.cost > 0 ? num(net / b.cost * 100, 0) + '%' : 'No cost';
+    $('planRows').innerHTML = res.all.map(function (x) {
+      return '<tr' + (x === b ? ' class="best"' : '') + '><td>' + optLabel(x) + (x === b ? ' (suggested)' : '') + '</td><td class="n">' + x.covers + '</td><td class="n">' + usd(x.cost) + '</td></tr>';
+    }).join('');
+  }
+
+  function render() {
+    var r = calc(read());
+    var m = period === 'year' ? 12 : 1;
+    var per = period === 'year' ? 'per year' : 'per month';
+    $('effOut').textContent = $('eff').value + '%';
+    $('compOut').textContent = $('comp').value + '%';
+    $('total').textContent = usd(r.total * m);
+    $('totalLabel').textContent = per + ', in staff time' + (r.priceVal > 0 ? ' and price savings' : '');
+    $('effVal').textContent = usd(r.effVal * m);
+    $('compVal').textContent = usd(r.compVal * m);
+    $('effSub').textContent = num(r.effHrs * m, 0) + ' buyer hours ' + per;
+    $('compSub').textContent = num(r.compHrs * m, 0) + ' buyer hours ' + per;
+    $('priceRow').hidden = !(r.priceVal > 0);
+    $('priceVal').textContent = usd(r.priceVal * m);
+    $('priceSub').textContent = 'from the average request value you entered';
+    var t = r.total || 1;
+    $('barE').style.flexBasis = (r.effVal / t * 100) + '%';
+    $('barC').style.flexBasis = (r.compVal / t * 100) + '%';
+    $('barP').style.flexBasis = (r.priceVal / t * 100) + '%';
+    $('hrsSaved').textContent = num(r.hrs * m, 0);
+    $('hrsLabel').textContent = 'buyer hours saved ' + per;
+    $('extraReq').textContent = '+' + num(r.extra, 1);
+    $('cautious').innerHTML = 'If real results are half of this: <b>' + usd(r.total * m / 2) + '</b> ' + per + '.';
+    renderPlan(r, m, per);
+    var cap = $('capNote');
+    if (r.capped) {
+      cap.hidden = false;
+      cap.textContent = 'At these assumptions your requests need ' + num(r.workload, 0) + ' hours a month, but your buyers have ' + num(r.capacity, 0) + '. The saving is limited to the hours your team actually has. Check the number of buyers or hours per request.';
+    } else { cap.hidden = true; }
+    $('pMonth').setAttribute('aria-pressed', period === 'month');
+    $('pYear').setAttribute('aria-pressed', period === 'year');
+  }
+
+  ids.forEach(function (k) { $(k).addEventListener('input', render); });
+  $('pMonth').addEventListener('click', function () { period = 'month'; render(); });
+  $('pYear').addEventListener('click', function () { period = 'year'; render(); });
+  render();
+})();
+</script>
+
+</body>
+</html>
