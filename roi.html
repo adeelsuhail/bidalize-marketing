@@ -119,6 +119,8 @@ input[type=range]:focus-visible { outline: 2px solid var(--focus); outline-offse
 .seg button:focus-visible { outline: 2px solid var(--panel-accent); outline-offset: 2px; }
 .big { font-family: var(--font-mono); font-weight: 500; font-size: clamp(2.3rem, 7vw, 3.4rem); line-height: 1; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
 .big-label { color: var(--panel-muted); margin-top: 8px; font-size: 0.92rem; }
+.after-plan { color: var(--panel-muted); margin-top: 4px; font-size: 0.85rem; }
+.after-plan b { color: var(--panel-ink); font-family: var(--font-mono); font-weight: 600; }
 
 .bar { display: flex; height: 10px; border-radius: 999px; overflow: hidden; background: var(--panel-line); gap: 2px; }
 .bar i { display: block; height: 100%; }
@@ -263,6 +265,7 @@ summary:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; bo
       <div>
         <div class="big" id="total">$0</div>
         <div class="big-label" id="totalLabel">per year, in staff time</div>
+        <div class="after-plan" id="afterPlan" hidden></div>
       </div>
       <div class="bar" id="bar" aria-hidden="true"><i class="e" id="barE"></i><i class="c" id="barC"></i><i class="p" id="barP"></i></div>
       <dl class="rows">
@@ -441,6 +444,7 @@ function calc(i) {
     var v = Math.round(parseFloat($('rfps').value));
     if (!isFinite(v) || v < 0) v = 0;
     var prices = $('planPrices');
+    $('afterPlan').hidden = true;
     if (v === 0) {
       $('planName').textContent = 'Enter your monthly requests';
       $('planWhy').textContent = 'Add the number of requests your company runs each month to see which plan fits.';
@@ -469,6 +473,11 @@ function calc(i) {
     $('planPer').textContent = '$' + (b.cost / v).toFixed(2);
     $('planNet').textContent = (net < 0 ? '-' : '') + usd(Math.abs(net) * m);
     $('planNetLbl').textContent = 'net saving ' + per;
+    var an = $('afterPlan');
+    an.hidden = false;
+    an.innerHTML = net >= 0
+      ? '<b>' + usd(net * m) + '</b> ' + per + ' after the suggested plan (' + optLabel(b) + ', ' + usd(b.cost * m) + ' ' + per + ')'
+      : 'The suggested plan (' + optLabel(b) + ', ' + usd(b.cost * m) + ' ' + per + ') costs <b>' + usd(-net * m) + '</b> more than this saving';
     $('planRoi').textContent = b.cost > 0 ? num(net / b.cost * 100, 0) + '%' : 'No cost';
     $('planRows').innerHTML = res.all.map(function (x) {
       return '<tr' + (x === b ? ' class="best"' : '') + '><td>' + optLabel(x) + (x === b ? ' (suggested)' : '') + '</td><td class="n">' + x.covers + '</td><td class="n">' + usd(x.cost) + '</td></tr>';
