@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://www.bidalize.com/</loc></url>
+  <url><loc>https://www.bidalize.com/challenge</loc></url>
+  <url><loc>https://www.bidalize.com/for-schools</loc></url>
+  <url><loc>https://www.bidalize.com/for-uae</loc></url>
+  <url><loc>https://www.bidalize.com/for-ngos</loc></url>
   <url><loc>https://www.bidalize.com/terms</loc></url>
   <url><loc>https://www.bidalize.com/privacy</loc></url>
   <url><loc>https://www.bidalize.com/agreement</loc></url>
   <url><loc>https://www.bidalize.com/cookies</loc></url>
   <url><loc>https://www.bidalize.com/acceptable-use</loc></url>
+  <url><loc>https://www.bidalize.com/billing</loc></url>
 </urlset>
