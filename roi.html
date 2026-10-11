@@ -189,6 +189,23 @@ summary:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; bo
 .sources .note { color: var(--muted); font-size: 0.88rem; }
 .sources a { color: var(--accent); overflow-wrap: anywhere; }
 .honest { color: var(--muted); font-size: 0.9rem; max-width: 70ch; }
+
+.roi-page .report h2 { font-size: 1.15rem; font-weight: 600; letter-spacing: -0.01em; }
+.report-lede { color: var(--muted); margin-top: 6px !important; max-width: 62ch; }
+.report-form { margin-top: 16px; display: flex; flex-direction: column; gap: 14px; }
+.report-row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+@media (max-width: 760px) { .report-row { grid-template-columns: 1fr; } }
+.report-form input[type=text], .report-form input[type=email] { width: 100%; font: inherit; font-size: 15px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; background: #f6f7f9; color: var(--ink); }
+.report-form input:focus { outline: 2px solid var(--focus); outline-offset: 1px; background: #fff; }
+.report-check { display: flex; gap: 8px; align-items: center; font-size: 14px; color: var(--ink); }
+.report-actions { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+.report-btn { background: var(--accent); color: #fff; border: 0; border-radius: 8px; padding: 10px 18px; font: inherit; font-size: 14.5px; font-weight: 500; cursor: pointer; }
+.report-btn[disabled] { opacity: .6; cursor: default; }
+.report-status { font-size: 14px; color: var(--muted); }
+.report-status.ok { color: #127a53; } .report-status.bad { color: #a32d2d; }
+.report-small { font-size: 12.5px; color: var(--muted); }
+.report-small a { color: var(--accent); }
+.hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
 </style>
 </head>
 <body>
@@ -230,6 +247,11 @@ summary:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; bo
             <label for="rfps">Requests your company runs per month</label>
             <div class="num"><input id="rfps" type="number" inputmode="numeric" min="0" step="1" value="20"></div>
           </div>
+        </div>
+        <div class="field">
+          <label for="spend">Yearly procurement spend (optional)</label>
+          <div class="num"><span>USD</span><input id="spend" type="number" inputmode="decimal" min="0" step="10000" placeholder="Leave blank to skip"></div>
+          <span class="hint" id="spendCheck">Everything your company buys from suppliers in a year. Adds a price savings line.</span>
         </div>
         <div class="field">
           <label for="salary">Monthly salary per buyer</label>
@@ -306,18 +328,37 @@ summary:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; bo
     </div>
   </section>
 
+  <section class="panel report" id="report">
+    <h2>Email me this report</h2>
+    <p class="report-lede">A PDF with your figures, the saving, the suggested plan and every assumption behind it, to share with your finance team.</p>
+    <form id="rf" class="report-form" autocomplete="on" novalidate>
+      <div class="report-row">
+        <div class="field"><label for="rf-name">Your name</label><input id="rf-name" name="name" type="text" maxlength="100" autocomplete="name" required></div>
+        <div class="field"><label for="rf-company">Company</label><input id="rf-company" name="company" type="text" maxlength="120" autocomplete="organization" required></div>
+        <div class="field"><label for="rf-email">Work email</label><input id="rf-email" name="email" type="email" maxlength="254" autocomplete="email" required></div>
+      </div>
+      <div class="hp" aria-hidden="true"><label for="rf-website">Leave this empty</label><input id="rf-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+      <label class="report-check"><input id="rf-contact" type="checkbox"> Bidalize may contact me about this report.</label>
+      <div class="report-actions">
+        <button type="submit" id="rf-send" class="report-btn">Email me the report</button>
+        <span id="rf-status" class="report-status" role="status" aria-live="polite"></span>
+      </div>
+      <p class="report-small">We use these details to send the report and keep a record that it was sent. See the <a href="/privacy">privacy policy</a>.</p>
+    </form>
+  </section>
+
   <details class="panel" id="assumptions">
     <summary>Assumptions behind the numbers</summary>
     <div class="assump">
       <div class="field">
         <label for="hpr">Buyer hours per request today</label>
-        <div class="num"><input id="hpr" type="number" min="0" step="1" value="20"><span class="suffix">hrs</span></div>
-        <span class="hint">Drafting the request, chasing suppliers, reading quotes, building the comparison. This is a Bidalize default, not an analyst figure. Replace it with your own.</span>
+        <div class="num"><input id="hpr" type="number" min="0" step="1" value="5"><span class="suffix">hrs</span></div>
+        <span class="hint">About 1 hour to write and send the request, 2 to build the comparison, 1 to fix errors and gaps, and 1 to chase suppliers. A Bidalize default from how the work goes today, not an analyst figure. Replace it with your own.</span>
       </div>
       <div class="field">
         <label for="aud">Compliance and audit hours per request today</label>
-        <div class="num"><input id="aud" type="number" min="0" step="1" value="4"><span class="suffix">hrs</span></div>
-        <span class="hint">Filing records, justifying the choice, answering finance or audit. Also a Bidalize default.</span>
+        <div class="num"><input id="aud" type="number" min="0" step="1" value="1"><span class="suffix">hrs</span></div>
+        <span class="hint">Filing the record, justifying the choice, answering finance or audit later. Also a Bidalize default.</span>
       </div>
       <div class="field">
         <label for="hm">Working hours per buyer per month</label>
@@ -325,19 +366,19 @@ summary:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; bo
         <span class="hint">Used to turn monthly salary into an hourly cost.</span>
       </div>
       <div class="field">
-        <label for="avgv">Average value of one request (optional)</label>
-        <div class="num"><span>USD</span><input id="avgv" type="number" min="0" step="100" placeholder="Leave blank to skip"></div>
-        <span class="hint">Only needed if you want a price savings line.</span>
+        <label for="share">Share of that spend run through quotes</label>
+        <div class="num"><input id="share" type="number" min="0" max="100" step="1" value="20"><span class="suffix">%</span></div>
+        <span class="hint">The everyday purchases you ask suppliers to quote for, not contracts, salaries or rent. BCG puts this kind of spend at about 20% of the total.</span>
       </div>
       <div class="field">
         <label for="pimp">Price improvement from comparing quotes side by side</label>
         <div class="num"><input id="pimp" type="number" min="0" max="50" step="0.5" value="2"><span class="suffix">%</span></div>
-        <span class="hint">Not sourced. Applied only when an average request value is entered. Keep it small.</span>
+        <span class="hint">About 0.5% from avoiding comparison errors (a wrong figure that changes who wins) and 1 to 2% from comparing every quote properly. BCG finds 5 to 10% for full tail-spend programmes; this claims a fraction of that. Applied only when a spend figure is entered.</span>
       </div>
       <pre class="formula">Hourly cost        = monthly salary / working hours per month
 Efficiency saving  = requests x hours per request x efficiency % x hourly cost
 Compliance saving  = requests x audit hours per request x compliance % x hourly cost
-Price saving       = requests x average value x price improvement %
+Price saving       = yearly spend / 12 x share through quotes x price improvement %
 Yearly             = monthly x 12
 Hours are capped at your team's total working hours.</pre>
     </div>
@@ -362,6 +403,19 @@ Hours are capped at your team's total working hours.</pre>
         <span class="note">Supports the compliance figure. These are older studies, so treat them as a direction, not a forecast. <a href="https://www.industryweek.com/leadership/companies-executives/article/21934233/e-procurement-provides-significant-cost-savings">IndustryWeek report</a></span>
       </li>
     </ul>
+    <ul>
+      <li>
+        <span class="who">BCG, Taming Tail Spend (2019)</span>
+        <span class="what">Tail spend is about 20% of spend but about 80% of transactions. Firms that manage it digitally cut it by 5 to 10% a year on average.</span>
+        <span class="note">Supports the share and price improvement figures. <a href="https://www.bcg.com/publications/2019/taming-tail-spend">BCG article</a></span>
+      </li>
+      <li>
+        <span class="who">Raymond Panko, spreadsheet error research</span>
+        <span class="what">Field audits since 1997 found errors in at least 86% of the spreadsheets examined, with 0.4 to 2.5% of cells wrong.</span>
+        <span class="note">Why retyped comparisons go wrong. <a href="https://arxiv.org/pdf/0802.3457">Paper</a></span>
+      </li>
+    </ul>
+    <p class="honest">For buyers who answer to a donor, a board or an auditor, a purchase that cannot be evidenced can be disallowed in full. That risk is real but rare, so it is not in the numbers above.</p>
     <p class="honest">These studies measure procurement automation in general, not Bidalize. The 50% efficiency default sits at the top of the cited range. Move the slider down for a cautious estimate. Hours per request are Bidalize assumptions, not analyst figures.</p>
   </section>
 </main>
@@ -381,7 +435,7 @@ function calc(i) {
   var buyers = n(i.buyers), salary = n(i.salary), rfps = n(i.rfps);
   var eff = Math.min(n(i.eff), 100) / 100, comp = Math.min(n(i.comp), 100) / 100;
   var hpr = n(i.hpr), aud = n(i.aud), hm = n(i.hm) || 160;
-  var avgv = n(i.avgv), pimp = Math.min(n(i.pimp), 100) / 100, cost = n(i.cost);
+  var spend = n(i.spend), share = Math.min(n(i.share), 100) / 100, pimp = Math.min(n(i.pimp), 100) / 100, cost = n(i.cost);
   var hourly = salary / hm;
   var workload = rfps * (hpr + aud);
   var capacity = buyers * hm;
@@ -390,19 +444,20 @@ function calc(i) {
   var compHrs = rfps * aud * scale * comp;
   var effVal = effHrs * hourly;
   var compVal = compHrs * hourly;
-  var priceVal = rfps * avgv * pimp;
+  var quoted = spend / 12 * share;   // monthly spend run through quotes
+  var priceVal = quoted * pimp;
   var total = effVal + compVal + priceVal;
   var perReq = hpr + aud;
   var extra = perReq > 0 ? (effHrs + compHrs) / perReq : 0;
   return { hourly: hourly, workload: workload, capacity: capacity, capped: scale < 1,
     effHrs: effHrs, compHrs: compHrs, effVal: effVal, compVal: compVal, priceVal: priceVal,
-    total: total, extra: extra, cost: cost, hrs: effHrs + compHrs };
+    total: total, extra: extra, cost: cost, hrs: effHrs + compHrs, quoted: quoted };
 }
 // CALC-END
 
 (function () {
   var $ = function (id) { return document.getElementById(id); };
-  var ids = ['buyers','salary','rfps','eff','comp','hpr','aud','hm','avgv','pimp'];
+  var ids = ['buyers','spend','salary','rfps','eff','comp','hpr','aud','hm','share','pimp'];
   var period = 'year';
   var usd = function (v) { return '$' + Math.round(v).toLocaleString('en-US'); };
   var num = function (v, d) { return v.toLocaleString('en-US', { maximumFractionDigits: d == null ? 0 : d }); };
@@ -498,7 +553,12 @@ function calc(i) {
     $('compSub').textContent = num(r.compHrs * m, 0) + ' buyer hours ' + per;
     $('priceRow').hidden = !(r.priceVal > 0);
     $('priceVal').textContent = usd(r.priceVal * m);
-    $('priceSub').textContent = 'from the average request value you entered';
+    $('priceSub').textContent = 'on ' + usd(r.quoted * m) + ' of spend through quotes ' + per;
+    var sc = $('spendCheck');
+    if (r.quoted > 0) {
+      var rq = Math.round(parseFloat($('rfps').value)) || 0;
+      sc.textContent = '= ' + usd(r.quoted * 12) + ' a year through quotes' + (rq > 0 ? ', about ' + usd(r.quoted / rq) + ' per request at your ' + num(rq) + ' a month' : '') + '. If that looks wrong, change the share under Assumptions.';
+    } else { sc.textContent = 'Everything your company buys from suppliers in a year. Adds a price savings line.'; }
     var t = r.total || 1;
     $('barE').style.flexBasis = (r.effVal / t * 100) + '%';
     $('barC').style.flexBasis = (r.compVal / t * 100) + '%';
@@ -521,6 +581,27 @@ function calc(i) {
   $('pMonth').addEventListener('click', function () { period = 'month'; render(); });
   $('pYear').addEventListener('click', function () { period = 'year'; render(); });
   render();
+
+  // "Email me this report": the inputs go to the server, which recalculates and sends the PDF
+  var rf = $('rf');
+  if (rf) rf.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var st = $('rf-status'), btn = $('rf-send');
+    var name = $('rf-name').value.trim(), company = $('rf-company').value.trim(), email = $('rf-email').value.trim();
+    st.className = 'report-status';
+    if (!name || !company) { st.textContent = 'Add your name and your company.'; st.className += ' bad'; return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { st.textContent = 'That email address does not look right.'; st.className += ' bad'; return; }
+    btn.disabled = true; st.textContent = 'Sending…';
+    fetch('https://bquyallwaxmxftiypwco.supabase.co/functions/v1/roi-report', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: name, company: company, email: email, contact_ok: $('rf-contact').checked, website: $('rf-website').value, inputs: read() })
+    }).then(function (res) { return res.json().catch(function () { return {}; }).then(function (j) { return { ok: res.ok, j: j }; }); })
+      .then(function (x) {
+        if (x.ok && x.j.ok) { st.textContent = 'Sent to ' + email + '. Check your inbox, and the spam folder if it is not there in a few minutes.'; st.className += ' ok'; }
+        else { st.textContent = (x.j && x.j.error) || 'Could not send the report. Try again.'; st.className += ' bad'; btn.disabled = false; }
+      })
+      .catch(function () { st.textContent = 'Could not reach the server. Check your connection and try again.'; st.className += ' bad'; btn.disabled = false; });
+  });
 })();
 </script>
 
