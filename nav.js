@@ -1,0 +1,65 @@
+// nav.js: a Menu button for narrow screens. Each page hides some header links on small screens
+// (class "hide"); without this there was no way to reach them except scrolling. When those links
+// are hidden, the header keeps the logo, Start free (if the page has it) and a Menu button; the
+// button opens a panel under the header with every other header link. Desktop is unchanged.
+(function () {
+  var nav = document.querySelector('nav')
+  var bar = nav && nav.querySelector('.navlinks')
+  if (!bar) return
+  var hidden = bar.querySelectorAll('a.hide')
+  if (!hidden.length) return
+
+  var css = document.createElement('style')
+  css.textContent =
+    '.bdl-menu-btn{display:none;align-items:center;gap:6px;padding:8px 12px;border:1px solid var(--line,#e4e6ec);border-radius:8px;background:#fff;' +
+    'color:var(--ink,#14171f);font:inherit;font-size:14px;font-weight:600;cursor:pointer;line-height:1}' +
+    '.bdl-narrow .bdl-menu-btn{display:inline-flex}' +
+    '.bdl-narrow .navlinks{gap:10px}' +
+    '.bdl-narrow .navlinks .btn{white-space:nowrap;padding-left:14px;padding-right:14px}' +
+    '.bdl-narrow .navlinks>a:not(.btn){display:none!important}' +
+    '.bdl-menu{position:absolute;left:0;right:0;top:100%;background:#fff;border-bottom:1px solid var(--line,#e4e6ec);' +
+    'box-shadow:0 18px 40px -24px rgba(20,23,31,.35);padding:6px 16px 12px;z-index:30}' +
+    '.bdl-menu[hidden]{display:none}' +
+    '.bdl-menu a{display:block;padding:12px 4px;font-size:16px;color:var(--ink,#14171f);text-decoration:none;border-bottom:1px solid var(--line,#e4e6ec)}' +
+    '.bdl-menu a:last-child{border-bottom:none}'
+  document.head.appendChild(css)
+
+  if (getComputedStyle(nav).position === 'static') nav.style.position = 'relative'
+
+  var panel = document.createElement('div')
+  panel.className = 'bdl-menu'; panel.id = 'bdl-menu'; panel.hidden = true
+  Array.prototype.forEach.call(bar.querySelectorAll('a'), function (a) {
+    if (a.classList.contains('btn')) return
+    var c = document.createElement('a')
+    c.href = a.getAttribute('href'); c.textContent = a.textContent
+    if (a.target) c.target = a.target
+    panel.appendChild(c)
+  })
+  nav.appendChild(panel)
+
+  var btn = document.createElement('button')
+  btn.type = 'button'; btn.className = 'bdl-menu-btn'
+  btn.setAttribute('aria-expanded', 'false'); btn.setAttribute('aria-controls', 'bdl-menu')
+  btn.innerHTML = '<span aria-hidden="true" style="font-size:16px">&#9776;</span>Menu'
+  bar.appendChild(btn)
+
+  function close() { panel.hidden = true; btn.setAttribute('aria-expanded', 'false') }
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation()
+    var open = panel.hidden
+    panel.hidden = !open; btn.setAttribute('aria-expanded', open ? 'true' : 'false')
+  })
+  panel.addEventListener('click', function (e) { if (e.target.tagName === 'A') close() })
+  document.addEventListener('click', function (e) { if (!panel.hidden && !panel.contains(e.target)) close() })
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !panel.hidden) { close(); btn.focus() } })
+
+  // narrow = the page's own CSS has hidden its "hide" links (each page sets its own breakpoint)
+  function check() {
+    nav.classList.remove('bdl-narrow')   // measure the page's own rule, not ours
+    var narrow = getComputedStyle(hidden[0]).display === 'none'
+    nav.classList.toggle('bdl-narrow', narrow)
+    if (!narrow) close()
+  }
+  check()
+  window.addEventListener('resize', check)
+})()
