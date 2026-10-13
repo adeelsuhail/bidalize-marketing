@@ -2,6 +2,39 @@
 // (class "hide"); without this there was no way to reach them except scrolling. When those links
 // are hidden, the header keeps the logo, Start free (if the page has it) and a Menu button; the
 // button opens a panel under the header with every other header link. Desktop is unchanged.
+// Tester strip (13 Oct 2026): one line above the header on every page except /testers itself, linking
+// to the tester programme. It can be closed; the choice is kept in this browser only (localStorage, no
+// cookie, nothing sent anywhere). To take it down when the places are full, set TESTER_STRIP to false.
+(function () {
+  var TESTER_STRIP = true
+  if (!TESTER_STRIP) return
+  if (/^\/testers(\.html)?\/?$/.test(location.pathname)) return
+  var KEY = 'bdl_tester_strip_closed'
+  try { if (localStorage.getItem(KEY)) return } catch (e) { /* storage blocked: show it */ }
+  var nav = document.querySelector('nav')
+  if (!nav || !nav.parentNode) return
+
+  var css = document.createElement('style')
+  css.textContent =
+    '.bdl-strip{position:relative;background:#1b3a8c;color:#fff;font:500 13.5px/1.45 Inter,system-ui,sans-serif;text-align:center;padding:9px 44px}' +
+    '.bdl-strip a{color:#fff;text-decoration:underline;text-underline-offset:2px;font-weight:600;white-space:nowrap}' +
+    '.bdl-strip button{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:30px;height:30px;border:0;border-radius:6px;' +
+    'background:transparent;color:#c3cdea;font-size:20px;line-height:1;cursor:pointer}' +
+    '.bdl-strip button:hover{background:rgba(255,255,255,.12);color:#fff}' +
+    '@media(max-width:560px){.bdl-strip{font-size:13px;padding:8px 40px 8px 14px;text-align:left}}'
+  document.head.appendChild(css)
+
+  var bar = document.createElement('div')
+  bar.className = 'bdl-strip'; bar.setAttribute('role', 'region'); bar.setAttribute('aria-label', 'Tester programme')
+  bar.innerHTML = 'Testers wanted: 45 days free, up to 20 organisations. <a href="/testers">See the terms &rarr;</a>' +
+    '<button type="button" aria-label="Close this message">&times;</button>'
+  bar.querySelector('button').addEventListener('click', function () {
+    try { localStorage.setItem(KEY, String(Date.now())) } catch (e) { /* closes for this page view only */ }
+    bar.remove()
+  })
+  nav.parentNode.insertBefore(bar, nav)
+})();
+
 (function () {
   var nav = document.querySelector('nav')
   var bar = nav && nav.querySelector('.navlinks')
