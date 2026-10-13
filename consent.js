@@ -6,7 +6,7 @@
 // app at app.bidalize.com can read it and report a sign-up to Google Ads only for people who agreed.
 // Remarketing (ad_personalization) and analytics stay off either way.
 (function () {
-  var ADS_ID = '' // the Google Ads tag, e.g. 'AW-123456789'
+  var ADS_ID = 'AW-18510192844' // Google Ads tag for the Bidalize ads account (Vorapure UK Ltd)
   if (!ADS_ID) return
 
   var NAME = 'bdl_consent'
