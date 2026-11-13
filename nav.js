@@ -5,6 +5,27 @@
 // Tester strip (13 Oct 2026): one line above the header on every page except /testers itself, linking
 // to the tester programme. It can be closed; the choice is kept in this browser only (localStorage, no
 // cookie, nothing sent anywhere). To take it down when the places are full, set TESTER_STRIP to false.
+//
+// Campaign tag (Nov 2026): when a page is opened with ?src=<tag> (the links in our outreach emails),
+// the tag is added in front of the page's own tag on every "Start free" / "Apply" link to the app, so
+// /testers?src=e1 sends people to app.bidalize.com/register?...&src=e1.testers. It lives only in the
+// address, nothing is stored in the browser, so no cookie or banner is involved. The app keeps it on
+// the new account (user_metadata.src). Tags are limited to letters, digits, - and _ (max 16).
+(function () {
+  try {
+    var m = location.search.match(/[?&]src=([^&#]*)/)
+    var tag = m ? decodeURIComponent(m[1]).toLowerCase() : ''
+    if (!/^[a-z0-9][a-z0-9_-]{0,15}$/.test(tag)) return
+    Array.prototype.forEach.call(document.querySelectorAll('a[href*="app.bidalize.com/register"]'), function (a) {
+      try {
+        var u = new URL(a.href), own = u.searchParams.get('src')
+        u.searchParams.set('src', tag + (own ? '.' + own : ''))
+        a.href = u.toString()
+      } catch (e) { /* leave this link as it was */ }
+    })
+  } catch (e) { /* tagging must never get in the way of the page */ }
+})();
+
 (function () {
   var TESTER_STRIP = true
   if (!TESTER_STRIP) return
